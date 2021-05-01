@@ -1,12 +1,207 @@
-<html>
+<!doctype html>
+<html lang="en">
+    <style>
+        a {
+          text-decoration: none;
+          display: inline-block;
+          padding: 8px 16px;
+        }
+        
+        a:hover {
+          background-color: #dddddd;
+          color: black;
+        }
+        
+        .previous {
+          background-color: #f1f1f1;
+          color: black;
+        }
+        
+        .next {
+          background-color: #04AA6D;
+          color: white;
+        }
+        
+        .round {
+          border-radius: 50%;
+        }
+        </style>
 <head>
-    <meta charset="utf-8">
-    <title></title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <link rel="stylesheet" href="static/css/style.css">
+  <title>Schedule Template | CodyHouse</title>
 </head>
+<body>
+  <header class="cd-main-header text-center flex flex-column flex-center">
+    <a href="{{ url_for('backPage', index = index)}}" class="previous round">&#8249;</a>
+  <h1 class="text-xl">Schedule Template</h1>
+  <a href="{{ url_for('nextPage', index = index)}}" class="next round">&#8250;</a>
 
-<body class="d-flex flex-column">
-   
+  </header>
 
+  <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+    <div class="cd-schedule__timeline">
+      <ul>
+          {%for i in range(end_hour - start_hour) %}
+            <li><span>{{start_hour + i}}: 00 </span></li>
+            {% endfor %}
+
+      </ul>
+    </div> <!-- .cd-schedule__timeline -->
+  
+    <div class="cd-schedule__events">
+      <ul>
+        <li class="cd-schedule__group">
+            <div class="cd-schedule__top-info"><span>Sunday {{dates[index]}} </span></div>
+    
+            <ul>
+                {% for i in  events[6] %}
+                {%if i['start_day'] == dates[index]%}
+                    <li class="cd-schedule__event">
+                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-1">
+                        <em class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                    </li>
+                {%endif%}
+                {%endfor%}
+            </ul>
+          </li>
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Monday {{dates[index+1]}}</span></div>
+  
+          <ul>
+              {% for i in  events[0] %}
+                {%if i['start_day'] == dates[index+1]%}
+                    <li class="cd-schedule__event">
+                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-2">
+                        <em class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                    </li>
+                {%endif%}
+                {%endfor%}
+
+          </ul>
+        </li>
+  
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Tuesday {{dates[index+2]}}</span></div>
+  
+          <ul>
+            {% for i in  events[1] %}
+                {%if i['start_day'] == dates[index+2]%}
+
+                    <li class="cd-schedule__event">
+                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-3">
+                        <em class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                    </li>
+                {%endif%}
+
+                {%endfor%}
+
+          </ul>
+        </li>
+  
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Wednesday {{dates[index+3]}}</span></div>
+  
+          <ul>
+            {% for i in  events[2] %}
+                {%if i['start_day'] == dates[index+3]%}
+
+                <li class="cd-schedule__event">
+                <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-4">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                </a>
+                </li>
+                {%endif%}
+
+            {%endfor%}
+          </ul>
+        </li>
+  
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Thursday {{dates[index+4]}}</span></div>
+  
+          <ul>
+            {% for i in  events[3] %}
+                {%if i['start_day'] == dates[index+4]%}
+
+                <li class="cd-schedule__event">
+                <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-1">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                </a>
+                </li>
+                {%endif%}
+
+            {%endfor%}
+
+          </ul>
+        </li>
+  
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Friday {{dates[index+5]}}</span></div>
+  
+          <ul>
+            {% for i in  events[4] %}
+                {%if i['start_day'] == dates[index+5]%}
+
+                <li class="cd-schedule__event">
+                <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-2">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                </a>
+                </li>
+                {%endif%}
+
+            {%endfor%}
+          </ul>
+        </li>
+
+        <li class="cd-schedule__group">
+            <div class="cd-schedule__top-info"><span>Saturday {{dates[index+6]}}</span></div>
+    
+            <ul>
+                {% for i in  events[5] %}
+                    {%if i['start_day'] == dates[index+6]%}
+
+                    <li class="cd-schedule__event">
+                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-3">
+                        <em class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                    </li>
+                    {%endif%}
+
+                {%endfor%}
+            </ul>
+          </li>
+          
+      </ul>
+    </div>
+  
+    <div class="cd-schedule-modal">
+      <header class="cd-schedule-modal__header">
+        <div class="cd-schedule-modal__content">
+          <span class="cd-schedule-modal__date"></span>
+          <h3 class="cd-schedule-modal__name"></h3>
+        </div>
+  
+        <div class="cd-schedule-modal__header-bg"></div>
+      </header>
+  
+      <div class="cd-schedule-modal__body">
+        <div class="cd-schedule-modal__event-info"></div>
+        <div class="cd-schedule-modal__body-bg"></div>
+      </div>
+  
+      <a href="#0" class="cd-schedule-modal__close text-replace">Close</a>
+    </div>
+  
+    <div class="cd-schedule__cover-layer"></div>
+  </div> <!-- .cd-schedule -->
+
+  <script src="static/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+  <script src="static/js/main.js"></script>
 </body>
-</html>  
+</html>

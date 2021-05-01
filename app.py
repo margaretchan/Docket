@@ -12,9 +12,19 @@ purpose: Render our website pages.
 def home():
     events = populateCalendar()
     dates = getStartEndDates()
-    print(events[0][0]['start_day'])
-    print(dates[0])
-    return render_template('index.html', start_hour = 8, end_hour= 24, events =events, dates = dates)
+    return render_template('index.html', start_hour = 8, end_hour= 24, events =events, dates = dates, index = 0)
+
+@app.route('/nextpage<index>', methods=['GET', 'POST'])
+def nextPage(index):
+    events = populateCalendar()
+    dates = getStartEndDates()
+    return render_template('index.html', start_hour = 8, end_hour= 24, events = events, dates = dates, index = int(index) + 7)
+
+@app.route('/backpage<index>', methods=['GET', 'POST'])
+def backPage(index):
+    events = populateCalendar()
+    dates = getStartEndDates()
+    return render_template('index.html', start_hour = 8, end_hour= 24, events = events, dates = dates, index = int(index) - 7)
 
 
 """

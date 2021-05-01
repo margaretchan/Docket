@@ -47,7 +47,7 @@ def getStartEndDates():
     for i in range(delta.days + 1):
         day = sunday_start + datetime.timedelta(days=i)
         dates.append(day.strftime("%m/%d/%Y"))
-    return (dates)
+    return dates
 
 def getCalendarInfo():
     """Shows basic usage of the Google Calendar API.
@@ -121,7 +121,6 @@ def populateCalendar():
             calendarEvents[start.weekday()] = [{"start_day": start.date().strftime("%m/%d/%Y"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m/%d/%Y"), "end_time": end.time().strftime("%H:%M"), "name": name}]
         else:   
             calendarEvents[start.weekday()].append({"start_day": start.date().strftime("%m/%d/%Y"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m/%d/%Y"), "end_time": end.time().strftime("%H:%M"), "name": name})
-    print(calendarEvents[0][0])
     return calendarEvents
 
 

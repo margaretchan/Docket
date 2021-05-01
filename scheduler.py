@@ -1,6 +1,6 @@
 from events import Task, BusyBlock, TaskBlock
 from quickstart import populateBusyBlocks
-import datetime import datetime, time, timedelta
+from datetime import datetime, time, timedelta
 
 """
 schedule() will use a modified version of the Earliest Deadline First (EDF)

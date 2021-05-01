@@ -25,6 +25,12 @@
         .round {
           border-radius: 50%;
         }
+
+        .button.disabled {
+          opacity: 0.65; 
+          cursor: not-allowed;
+        }
+
         </style>
 <head>
   <meta charset="UTF-8">
@@ -35,9 +41,17 @@
 </head>
 <body>
   <header class="cd-main-header text-center flex flex-column flex-center">
+    {%if index == 0 %}
+    <a class="button disabled">&#8249;</a>
+    {%else%}
     <a href="{{ url_for('backPage', index = index)}}" class="previous round">&#8249;</a>
-  <h1 class="text-xl">Schedule Template</h1>
-  <a href="{{ url_for('nextPage', index = index)}}" class="next round">&#8250;</a>
+    {%endif%}
+    <h1 class="text-xl">Schedule Template</h1>
+    {%if index == 21 %}
+    <a  class="button disabled">&#8250;</a>
+    {%else%}
+    <a href="{{ url_for('nextPage', index = index)}}" class="next round">&#8250;</a>
+    {%endif%}
 
   </header>
 

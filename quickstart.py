@@ -1,7 +1,7 @@
 from __future__ import print_function
 import datetime
 import os.path
-from events import Task, BusyBlock, WorkBlock
+from events import Task, BusyBlock, TaskBlock
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request

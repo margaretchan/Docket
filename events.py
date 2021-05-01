@@ -2,19 +2,22 @@
 Task is an assignment or job which must be completed by a specific due date.
     name : string
     due : datetime.datetime
-    expected_time : datetime.time - the total time it is expected to take to 
+    expected_duration : datetime.time - the total time it is expected to take to 
       complete this task
     num_blocks : int - the amount of scheduled TaskBlocks this task will need to 
       be completed
     priority : int - higher number is higher priority
+    released : datetime.datetime - the earliest time the user can begin working on the task
 """
 class Task:
-    def __init__(self, name, due, expected_time, num_blocks, priority=0, num_blocks_assigned = 0):
+    def __init__(self, name, due, expected_duration, num_blocks, priority=0, 
+                 released=datetime.datetime.now()):
         self.name = name
-        self.expected_time = expected_time
+        self.due = due
+        self.expected_duration = expected_duration
         self.num_blocks = num_blocks
         self.priority = priority
-        self.num_blocks_assigned = num_blocks_assigned
+        self.num_blocks_assigned = 0
 
 
 """ 

@@ -64,7 +64,7 @@ def addAssignment():
     task = Task(name, deadline, timedelta(hours = hours), blocks, priority, start)
 
     task_blocks = schedule([task], busy_blocks)
-    new_events = addTaskToEvent(task_blocks, global_events)
+    new_events = addTaskToEvent(task_blocks, session['events'])
     dates = getStartEndDates() 
     new_assign = {
         "name": name,
@@ -76,7 +76,6 @@ def addAssignment():
     assignments.append(new_assign)
     session['events']=new_events
     index= session['index']
-
 
     return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  new_events, dates = dates, index = index, assignments = assignments)
 

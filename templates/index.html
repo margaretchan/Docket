@@ -1,31 +1,143 @@
 <!doctype html>
 <html lang="en">
     <style>
-        a {
-          text-decoration: none;
-          display: inline-block;
-          padding: 8px 16px;
-        }
+      /* The Modal (background) */
+
+    @font-face {
+      font-family: dmsans-regular;
+      src: url('/fonts/DMSans-Regular.ttf');
+    } 
+    @font-face {
+      font-family: dmsans-bold;
+      src: url('/fonts/DMSans-Bold.ttf');
+    }
+    @font-face {
+        font-family: dmsans-medium;
+        src: url('/fonts/DMSans-Medium.ttf');
+    }
+    body{
+      font-family: dmsans-regular;
+    }
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 3; /* Sit on top */
+      padding-top: 200px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      font-family: dmsans-regular;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      z-index: 1; /* Sit on top */
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+    }
+    
+    a:hover {
+      background-color: #dddddd;
+      color: black;
+    }
+    
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    
+    .next {
+      background-color: #04AA6D;
+      color: white;
+    }
         
-        a:hover {
-          background-color: #dddddd;
-          color: black;
-        }
-        
-        .previous {
-          background-color: #f1f1f1;
-          color: black;
-        }
-        
-        .next {
-          background-color: #04AA6D;
-          color: white;
-        }
-        
-        .round {
-          border-radius: 50%;
-        }
-        </style>
+    .round {
+      border-radius: 50%;
+    }
+
+    .button.disabled {
+      opacity: 0.65; 
+      cursor: not-allowed;
+    }
+
+    .accordion {
+      cursor: pointer;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+      filter: drop-shadow(0px 0px 3px #8BB790);
+      background: #FFFFFF;
+      border-radius: 8px;
+
+      font-size: 14px;
+      line-height: 131.34%;
+      /* identical to box height, or 16px */
+
+      letter-spacing: 0.03em;
+
+      color: #8BB790;
+    }
+
+    .active, .accordion:hover {
+      filter: drop-shadow(0px 0px 6px #8BB790);
+    }
+
+    .accordion:after {
+      content: '\002B';
+      color: #777;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .active:after {
+      content: "\2212";
+    }
+
+    .panel {
+      padding: 0 24px;
+      background: #FFFFFF;
+      box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size:14px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+
+</style>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,14 +145,81 @@
   <link rel="stylesheet" href="static/css/style.css">
   <title>Schedule Template | CodyHouse</title>
 </head>
+
 <body>
   <header class="cd-main-header text-center flex flex-column flex-center">
+    {%if index == 0 %}
+    <a class="button disabled">&#8249;</a>
+    {%else%}
     <a href="{{ url_for('backPage', index = index)}}" class="previous round">&#8249;</a>
-  <h1 class="text-xl">Schedule Template</h1>
-  <a href="{{ url_for('nextPage', index = index)}}" class="next round">&#8250;</a>
+    {%endif%}
+    <h1 class="text-xl">Schedule Template</h1>
+    {%if index == 21 %}
+    <a  class="button disabled">&#8250;</a>
+    {%else%}
+    <a href="{{ url_for('nextPage', index = index)}}" class="next round">&#8250;</a>
+    {%endif%}
 
   </header>
+  <div style = "width: 20%;">
+    <p>ASSIGNMENTS</p>
+        <!-- Trigger/Open The Modal -->
+    
 
+    <!--- Assignments --->
+    {%for i in assignments%}
+    <button class="accordion">{{i['name']}}</button>
+    <div class="panel">
+      <p><b>{{i['blocks']}}</b> blocks</p>
+      <p><b>{{i['priority']}}</b> priority</p>
+      <p><b>{{i['hours']}}</b> hours</p>
+      <p><b>Due</b> {{i['deadline']}} </p>
+    </div>
+    {%endfor%}
+<br>
+
+<button id="myBtn"> + Add Assignment</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        
+        <p>Add Assignment</p>
+        <form action="/addAssignment" method="POST">
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="e.g. Sociology Paper" required><br>
+        <label for="deadline">Deadline:</label><br>
+        <input type="date" id="deadline" name="deadline"><br>
+        <label for="start">Start Date:</label><br>
+        <input type="date" id="start" name="start" required><br>
+
+        <label for="priority">Priority:</label><br>
+        <select name="priority" id="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select><br>
+
+        <label for="blocks"># Blocks:</label><br>
+        <input type="number" id="blocks" name="blocks" required><br>
+
+        <label for="hours">Est. Time (HRS):</label><br>
+        <input type="number" id="hours" name="hours" required><br>
+        
+        <input type="submit" value="ADD">
+        <span class="close">CLOSE</span>
+      </form>
+
+      
+      </div>
+
+    </div>
+
+    
+  </div>
   <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
     <div class="cd-schedule__timeline">
       <ul>
@@ -57,7 +236,7 @@
             <div class="cd-schedule__top-info"><span>Sunday {{dates[index]}} </span></div>
     
             <ul>
-                {% for i in  events[6] %}
+                {% for i in events[6] %}
                 {%if i['start_day'] == dates[index]%}
                     <li class="cd-schedule__event">
                     <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-1">
@@ -203,5 +382,48 @@
 
   <script src="static/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
   <script src="static/js/main.js"></script>
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+      
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          } 
+        });
+      }
+      </script>
 </body>
 </html>

@@ -36,10 +36,10 @@ def getStartEndDates():
 
     # Calculate the first Sunday of the week and coming Saturday of the week
     day_of_week = datetime.datetime.today().weekday()
-    sunday_date =  datetime.datetime.utcnow() - datetime.timedelta(days=day_of_week + 1)
+    sunday_date =  datetime.datetime.now() - datetime.timedelta(days=day_of_week + 1)
     sunday_start = datetime.datetime.combine(sunday_date.date(), datetime.time(0,0,0))    
     
-    saturday_date =  datetime.datetime.utcnow() + datetime.timedelta(days= 28 + (5 - day_of_week) )
+    saturday_date =  datetime.datetime.now() + datetime.timedelta(days= 28 + (5 - day_of_week) )
     saturday_end = datetime.datetime.combine(saturday_date.date(), datetime.time(23,59,59))    
     
     delta = saturday_end.date() - sunday_start.date()
@@ -75,11 +75,11 @@ def getCalendarInfo():
 
     # Calculate the first Sunday of the week and coming Saturday of the week
     day_of_week = datetime.datetime.today().weekday()
-    sunday_date =  datetime.datetime.utcnow() - datetime.timedelta(days=day_of_week + 1)
+    sunday_date =  datetime.datetime.now() - datetime.timedelta(days=day_of_week + 1)
     sunday_start = datetime.datetime.combine(sunday_date.date(), datetime.time(0,0,0))    
     sunday_formated =  sunday_start.isoformat() + 'Z' # 'Z' indicates UTC time
     
-    saturday_date =  datetime.datetime.utcnow() + datetime.timedelta(days= 28 + (5 - day_of_week) )
+    saturday_date =  datetime.datetime.now() + datetime.timedelta(days= 28 + (5 - day_of_week) )
     saturday_end = datetime.datetime.combine(saturday_date.date(), datetime.time(23,59,59))    
     saturday_formated =  saturday_end.isoformat() + 'Z' # 'Z' indicates UTC time
 
@@ -88,7 +88,6 @@ def getCalendarInfo():
                                         timeMax= saturday_formated, singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
-
     return events
 
 def populateBusyBlocks():
@@ -125,4 +124,4 @@ def populateCalendar():
 
 
 if __name__ == '__main__':
-    getStartEndDates()
+    getCalendarInfo()

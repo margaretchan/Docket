@@ -202,7 +202,7 @@
   }
 
   .panel {
-    padding: 0 24px;
+    /* padding: 0 24px; */
     background: #FFFFFF;
     box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -210,6 +210,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+    margin-bottom: 12px;
   }
 
   .center {
@@ -248,6 +249,37 @@
     letter-spacing: 0.12em;
     margin-bottom: 24px;
     color: #BCBCBC;
+  }
+
+  .panel-content{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+  }
+
+  .panel-item{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 131.34%;
+    letter-spacing: 0.03em;
+    color: #686868;
+    margin-bottom: 8px;
+  }
+
+  img#panel-icon{
+    width: 16px;
+    height: 16px;
+    margin-right:4px;
+  }
+
+  p#panel-text{
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    top: -50%;
   }
 
   /* Schedule View */
@@ -323,10 +355,24 @@
       {%for i in assignments%}
       <button class="accordion">{{i['name']}}</button>
       <div class="panel">
-        <p><b>{{i['blocks']}}</b> blocks</p>
-        <p><b>{{i['priority']}}</b> priority</p>
-        <p><b>{{i['hours']}}</b> hours</p>
-        <p><b>Due</b> {{i['deadline']}} </p>
+        <div class="panel-content">
+          <div class="panel-item">
+            <img id="panel-icon" src="/static/images/blocks.png">
+            <p id="panel-text"><b style="font-weight: bold; color: #000000;">{{i['blocks']}}</b> blocks</p>
+          </div>
+          <div class="panel-item">
+            <img id="panel-icon" src="/static/images/priority.png">
+            <p id="panel-text"><b style="font-weight: bold; color: #000000;">{{i['priority']}}</b> priority</p>
+          </div>
+          <div class="panel-item">
+            <img id="panel-icon" src="/static/images/time.png">
+            <p id="panel-text"><b style="font-weight: bold; color: #000000;">{{i['hours']}}</b> hours</p>
+          </div>
+          <div class="panel-item">
+            <img id="panel-icon" src="/static/images/deadlne.png">
+            <p id="panel-text"><b style="font-weight: bold; color: #000000;">Due</b> {{i['deadline']}} </p>
+          </div>
+        </div>
       </div>
       {%endfor%}
 

@@ -5,8 +5,13 @@
     <title>Docket</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="static/css/theme.css">
+    <link rel="stylesheet" href="/static/css/theme.css">
     <meta name="google-signin-client_id" content="1093409666695-bs4595ef83tlond9dsfqnc7cij4tcmnr.apps.googleusercontent.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -37,23 +42,27 @@
 }
 </style>
 
-<body>
-    <div class="home_container">
-        <h1 id="home_title">DOCKET</h1>
+<body style="background-image: url('/static/images/landing.png');">
+    
+    <div class="wrapper">
+        <div class="home_container">
+            <h1 id="home_title">DOCKET</h1>
 
-        <p id= "subtitle_group">/ˈdäkət/ <span id="noun">noun</span></p>
-        
-        <hr>
+            <p id= "subtitle_group">/ˈdäkət/ <span id="noun">noun</span></p>
+            
+            <hr>
 
-        <p id="definition">a task management system that conveniently schedules and breaks down your assignments into bite-sized pieces.</p>
-        <p id="sentence">“What’s on the docket today?”</p><br>
-        <form action="/home">
-            <input type="submit" class ="google" value="Sign in with Google" />
-        </form>
+            <p id="definition">a task management system that conveniently schedules and breaks down your assignments into bite-sized pieces.</p>
+            <p id="sentence">“What’s on the docket today?”</p><br>
+            
+        </div>
+        <div>
+            <form action="/home">
+                <input type="submit" class ="google" value="Sign in with Google" />
+            </form>
+        </div>
     </div>
     
-    
-
     <!-- <footer>
         Made with ☕ by Cristie, Charu, and Margaret ©2021
     </footer> -->

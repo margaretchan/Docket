@@ -202,13 +202,13 @@
     {%if index == 0 %}
     <a class="button disabled week"><b>&#8249;</b></a>
     {%else%}
-    <a href="{{ url_for('backPage', index = index)}}" class="week"><b>&#8249;</b></a>
+    <a href="{{ url_for('backPage')}}" class="week"><b>&#8249;</b></a>
     {%endif%}
     <text>{{dates[index]}} - {{dates[index + 6]}}</text>
     {%if index == 21 %}
     <a  class="button disabled week"><b>&#8250;</b></a>
     {%else%}
-    <a href="{{ url_for('nextPage', index = index)}}" class="week"><b>&#8250;</b></a>
+    <a href="{{ url_for('nextPage')}}" class="week"><b>&#8250;</b></a>
     {%endif%}
   </div>
 
@@ -238,7 +238,7 @@
       <div class="modal-content">
         
         <h2 id="modal">Add Assignment</h2>
-        <form action="/addAssignment" method="POST">
+        <form action="{{url_for('addAssignment') }}" method="POST">
 
         <label id="modal-label" for="name">NAME</label><br>
         <input class="modal-input" type="text" id="name" name="name" placeholder="e.g. Sociology Paper" required><br>

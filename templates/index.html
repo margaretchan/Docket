@@ -18,7 +18,7 @@
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
       z-index: 3; /* Sit on top */
-      padding-top: 200px; /* Location of the box */
+      padding-top: 20px; /* Location of the box */
       left: 0;
       top: 0;
       width: 100%; /* Full width */
@@ -42,7 +42,7 @@
       font-size: 16px;
     }
     .modal-input{
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       margin-top: 2px;
       border: 1px solid #96B1D1;
       border-radius: 5px;
@@ -52,9 +52,10 @@
 
     /* Modal Content */
     .modal-content {
-      z-index: 1; /* Sit on top */
+      z-index: 9; 
       background-color: #fefefe;
-      margin: auto;
+      margin-left: auto;
+      margin-right: auto;
       padding: 36px;
       border: 1px solid #888;
       width: 30%;
@@ -70,9 +71,10 @@
       font-style: normal;
       font-weight: 700;
       border: 0px;
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: 2px;
       padding: 12px 24px;
+      margin-top: 12px;
     }
     button#myBtn:hover,
     button#myBtn:focus {
@@ -83,8 +85,8 @@
     /* The Close Button */
     .close {
       color: #A1A1A1;
-      float: left;
-      font-size: 16px;
+      /* float: right; */
+      font-size: 14px;
       font-weight: bold;
       border: 1px solid #A2A2A2;
       box-sizing: border-box;
@@ -106,6 +108,17 @@
       border-radius: 100px;
       letter-spacing: 2px;
       padding: 8px 24px;
+      font-size: 14px;
+      float: right;
+      color: white;
+    }
+    input#modal-submit:hover,
+    input#modal-submit:focus {
+      background-color: #7995B7;
+    }
+
+    .modal-buttons{
+      margin-top: 20px;
     }
     a.week {
       text-decoration: none;
@@ -113,12 +126,11 @@
       padding: 8px 16px;
       background-color: none;
       color: #96B1D1;
-      font-size:90px;
+      font-size:36px;
     }
 
     a.week:hover {
-      background-color: #ddd;
-      color: black;
+      color: #7995B7;
     }
 
 
@@ -134,7 +146,6 @@
       border: none;
       text-align: left;
       outline: none;
-      font-size: 15px;
       transition: 0.4s;
       filter: drop-shadow(0px 0px 3px #8BB790);
       background: #FFFFFF;
@@ -142,11 +153,15 @@
 
       font-size: 14px;
       line-height: 131.34%;
-      /* identical to box height, or 16px */
 
       letter-spacing: 0.03em;
 
       color: #8BB790;
+
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: 500;
+      margin-bottom: 16px;
     }
 
     .active, .accordion:hover {
@@ -180,9 +195,75 @@
       width: 50%;
       padding: 10px;
       text-align: center;
-      font-size: 60px;
+      font-size: 24px;
       color: #96B1D1;
-      font:  "dmsans-regular";
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+    }
+    
+    .wrapper{
+      
+    }
+
+    /* Assignment Panel */
+
+    div#assignment-container{
+      background-color: white;
+      width: 25%;
+      height: 100%; /* Full-height: remove this if you want "auto" height */
+      position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+      z-index: 1; /* Stay on top */
+      top: 0; /* Stay at the top */
+      left: 0;
+      background-color: white; /* Black */
+      overflow-x: hidden; /* Disable horizontal scroll */
+      padding: 36px;
+      box-shadow: 2px -4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title{
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 131.34%;
+      /* or 26px */
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
+      color: #BCBCBC;
+    }
+
+    /* Schedule View */
+
+    .right-side{
+      width: 72%;
+      margin-top: 36px;
+      margin-left: 20px;
+      margin-right: 20px;
+      height: auto;
+      float: right;
+      z-index: -1;
+      position: relative;
+      float: right;
+    }
+    div#schedule-container{
+      background-color: white;
+      width: 100%;
+      height: auto;
+      
+      float: right;
+      box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      
+    }
+    div#calendar-section{
+      font-family: DM Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 131.34%;
+      /* identical to box height, or 16px */
+
+      letter-spacing: 0.03em;
     }
 
 </style>
@@ -197,22 +278,10 @@
 </head>
 
 <body style="background-image: url('/static/images/main_background.png'); background-repeat: no-repeat;">
-  <div class = "center">
-    {%if index == 0 %}
-    <a class="button disabled week"><b>&#8249;</b></a>
-    {%else%}
-    <a href="{{ url_for('backPage', index = index)}}" class="week"><b>&#8249;</b></a>
-    {%endif%}
-    <text>{{dates[index]}} - {{dates[index + 6]}}</text>
-    {%if index == 21 %}
-    <a  class="button disabled week"><b>&#8250;</b></a>
-    {%else%}
-    <a href="{{ url_for('nextPage', index = index)}}" class="week"><b>&#8250;</b></a>
-    {%endif%}
-  </div>
-
-  <div style = "width: 20%;">
-    <p>ASSIGNMENTS</p>
+  
+  <div class="wrapper">
+  <div id="assignment-container">
+    <p class="section-title">ASSIGNMENTS</p>
         <!-- Trigger/Open The Modal -->
     
 
@@ -226,9 +295,8 @@
       <p><b>Due</b> {{i['deadline']}} </p>
     </div>
     {%endfor%}
-<br>
 
-<button id="myBtn"> + ADD ASSIGNMENT</button>
+    <button id="myBtn"> + ADD ASSIGNMENT</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -242,12 +310,12 @@
         <label id="modal-label" for="name">NAME</label><br>
         <input class="modal-input" type="text" id="name" name="name" placeholder="e.g. Sociology Paper" required><br>
         <label id="modal-label" for="deadline">DEADLINE</label><br>
-        <input class="modal-input" type="datetime-local" id="deadline" name="deadline"><br>
+        <input class="modal-input" type="datetime-local" id="deadline" name="deadline" ><br>
         <label id="modal-label" for="start">START DATE</label><br>
-        <input class="modal-input" type="datetime-local" id="start" name="start" required><br>
+        <input class="modal-input" type="datetime-local" id="start"  name="start" required><br>
 
         <label id="modal-label" for="priority">PRIORITY</label><br>
-        <select class="modal-input" name="priority" id="priority">
+        <select class="modal-input" name="priority" id="priority" >
           <option value="0">Low</option>
           <option value="1">Medium</option>
           <option value="2">High</option>
@@ -259,8 +327,10 @@
         <label id="modal-label" for="hours">EST. TIME (HRS):</label><br>
         <input class="modal-input" type="number" id="hours" name="hours" required><br>
         
-        <span class="close">CLOSE</span>
-        <input type="submit" id="modal-submit" value="ADD">
+        <div class="modal-buttons">
+          <span class="close">CLOSE</span>
+          <input type="submit" id="modal-submit" value="ADD">
+        </div>
         
       </form>
 
@@ -271,7 +341,24 @@
 
     
   </div>
-  <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+
+  <div class="right-side">
+    <p class="section-title">MY SCHEDULE</p>
+  <div id="schedule-container">
+    <div class = "center">
+      {%if index == 0 %}
+      <a class="button disabled week"><b>&#8249;</b></a>
+      {%else%}
+      <a href="{{ url_for('backPage', index = index)}}" class="week"><b>&#8249;</b></a>
+      {%endif%}
+      <text>{{dates[index]}} - {{dates[index + 6]}}</text>
+      {%if index == 21 %}
+      <a  class="button disabled week"><b>&#8250;</b></a>
+      {%else%}
+      <a href="{{ url_for('nextPage', index = index)}}" class="week"><b>&#8250;</b></a>
+      {%endif%}
+    </div>
+    <div id ="calendar-section" class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
     <div class="cd-schedule__timeline">
       <ul>
           {%for i in range(end_hour - start_hour) %}
@@ -430,6 +517,10 @@
   
     <div class="cd-schedule__cover-layer"></div>
   </div> <!-- .cd-schedule -->
+  </div>
+</div>
+</div>
+</div>
 
   <script src="static/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
   <script src="static/js/main.js"></script>

@@ -437,7 +437,7 @@
             <input class="modal-input" type="number" id="hours" name="hours" required><br>
 
             <div class="modal-buttons">
-              <span class="close" id="close">CLOSE</span>
+              <span class="close"id = "close">CLOSE</span>
               <input type="submit" id="modal-submit" value="ADD">
             </div>
 
@@ -456,13 +456,13 @@
           {%if index == 0 %}
           <a class="button disabled week"><b>&#8249;</b></a>
           {%else%}
-          <a href="{{ url_for('backPage', index = index)}}" class="week"><b>&#8249;</b></a>
+          <a href="{{ url_for('backPage')}}" class="week"><b>&#8249;</b></a>
           {%endif%}
           <text>{{dates[index]}} - {{dates[index + 6]}}</text>
           {%if index == 21 %}
           <a class="button disabled week"><b>&#8250;</b></a>
           {%else%}
-          <a href="{{ url_for('nextPage', index = index)}}" class="week"><b>&#8250;</b></a>
+          <a href="{{ url_for('nextPage')}}" class="week"><b>&#8250;</b></a>
           {%endif%}
         </div>
         <div id="calendar-section"
@@ -476,15 +476,15 @@
             </ul>
           </div> <!-- .cd-schedule__timeline -->
 
-          <div class="cd-schedule__events" style="pointer-events: none">
+          <div class="cd-schedule__events">
             <ul>
               <li class="cd-schedule__group">
                 <div class="cd-schedule__top-info"><span>SUN {{dates[index]}} </span></div>
 
                 <ul >
                   {% for i in events[6] %}
-                  {%if (i['start_day'] == dates[index]) and (i['start_day'] <= i['start_time']) %} <li
-                    class="cd-schedule__event" >
+                  {%if (i['start_day'] == dates[index]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                    class="cd-schedule__event">
                     <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                       data-event="event-1">
                       <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
@@ -499,7 +499,7 @@
 
               <ul>
                 {% for i in events[0] %}
-                {%if (i['start_day'] == dates[index+1]) and (i['start_day'] <= i['start_time'])%} <li
+                {%if (i['start_day'] == dates[index+1]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -517,7 +517,7 @@
 
               <ul>
                 {% for i in events[1] %}
-                {%if (i['start_day'] == dates[index+2]) and (i['start_day'] <= i['start_time'])%} <li
+                {%if (i['start_day'] == dates[index+2]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-3">
@@ -536,7 +536,7 @@
 
               <ul>
                 {% for i in events[2] %}
-                {%if (i['start_day'] == dates[index+3]) and (i['start_day'] <= i['start_time'])%} <li
+                {%if (i['start_day'] == dates[index+3]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-4">
@@ -554,7 +554,7 @@
 
               <ul>
                 {% for i in events[3] %}
-                {%if (i['start_day'] == dates[index+4]) and (i['start_day'] <= i['start_time'])%} <li
+                {%if (i['start_day'] == dates[index+4]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-1">
@@ -573,7 +573,7 @@
 
               <ul>
                 {% for i in events[4] %}
-                {%if (i['start_day'] == dates[index+5]) and (i['start_day'] <= i['start_time'])%} <li
+                {%if (i['start_day'] == dates[index+5]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -591,7 +591,7 @@
 
               <ul>
                 {% for i in events[5] %}
-                {%if (i['start_day'] == dates[index+6]) and (i['start_day'] <= i['start_time'])%} <li
+                {%if (i['start_day'] == dates[index+6]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-3">
@@ -639,13 +639,13 @@
     var span_close = document.getElementById("initClose");
 
 
-    window.onload = function () {
-      if (sessionStorage["PopupShown"] != 'yes') {
-        modalInit.style.display = "block";
-      }
-      sessionStorage["PopupShown"] = 'yes';
+      window.onload = function() {
+          if(sessionStorage["PopupShown"] != 'yes'){
+            modalInit.style.display = "block";
+          }
+          sessionStorage["PopupShown"] = 'yes';
 
-    };
+      };
     span_close.onclick = function () {
       modalInit.style.display = "none";
     }

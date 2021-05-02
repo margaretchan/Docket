@@ -47,7 +47,12 @@ zero = timedelta(seconds=0)
 five = timedelta(minutes=5)
 
 task1 = Task("task1", datetime(2021, 4, 30, 10, 0), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
+task11 = Task("task11", datetime(2021, 4, 30, 10, 0), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
+task12 = Task("task12", datetime(2021, 4, 30, 10, 0), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
+task13 = Task("task13", datetime(2021, 4, 30, 10, 0), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
 task2 = Task("task2", datetime(2021, 5, 1, 11, 30), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
+task21 = Task("task21", datetime(2021, 5, 1, 11, 30), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
+task22 = Task("task22", datetime(2021, 5, 1, 11, 30), timedelta(hours=2), 2, 1, datetime(2021, 4, 30, 8, 0))
 task3 = Task("task3", datetime(2021, 5, 1, 11, 30), timedelta(hours=1), 1, 1, datetime(2021, 4, 30, 8, 0))
 
 time7 = datetime(2021, 4, 30, 7, 0)
@@ -94,34 +99,34 @@ class TestScheduler(unittest.TestCase):
                          consolidate_blocks(three_overlapping))
         
     def test_schedule_with_earliest_start_Case1(self):
-        self.assertEqual(TaskBlock(time8, time9, task1, 1),
+        self.assertEqual(TaskBlock(time8, time9, task1, 2),
             schedule_with_earliest_start(task1, time8, start, end, [], zero, zero))
-        self.assertEqual(TaskBlock(time8, time9, task1, 1), 
-            schedule_with_earliest_start(task1, time8, start, end, [block_905_935], zero, five))
-        self.assertEqual(TaskBlock(time835, time935, task1, 1), 
-            schedule_with_earliest_start(task1, time8, start, end, [block_8_830], zero, five))
+        self.assertEqual(TaskBlock(time8, time9, task11, 2), 
+            schedule_with_earliest_start(task11, time8, start, end, [block_905_935], zero, five))
+        self.assertEqual(TaskBlock(time835, time935, task12, 2), 
+            schedule_with_earliest_start(task12, time8, start, end, [block_8_830], zero, five))
         
     def test_schedule_with_earliest_start_Case21(self):
-        self.assertEqual(TaskBlock(time820, time920, task1, 1), 
-            schedule_with_earliest_start(task1, time8, start, end, 
+        self.assertEqual(TaskBlock(time820, time920, task13, 2), 
+            schedule_with_earliest_start(task13, time8, start, end, 
                                          [block_8_815, block_925_935], zero, five))
-        self.assertEqual(TaskBlock(time820, time920, task1, 1), 
-            schedule_with_earliest_start(task1, time8, start, end, 
+        self.assertEqual(TaskBlock(time820, time920, task13, 1), 
+            schedule_with_earliest_start(task13, time8, start, end, 
                                          [block_8_815, block_nextday_10_11], zero, five))
         
     def test_schedule_with_earliest_start_Case22(self):
-        self.assertEqual(TaskBlock(time_nextday630, time_nextday730, task2, 1), 
+        self.assertEqual(TaskBlock(time_nextday630, time_nextday730, task2, 2), 
             schedule_with_earliest_start(task2, time8, start, end, 
                                          [block_830_1930, block_nextday_10_11], zero, five))
         
     def test_schedule_with_earliest_start_Case31(self):
-        self.assertEqual(TaskBlock(time_nextday10, time_nextday11, task2, 1), 
-            schedule_with_earliest_start(task2, time8, start, end, 
+        self.assertEqual(TaskBlock(time_nextday10, time_nextday11, task21, 2), 
+            schedule_with_earliest_start(task21, time8, start, end, 
                                          [block_830_1930, block_nextday_630_955], zero, five))
         
     def test_schedule_with_earliest_start_Case32(self):
-        self.assertEqual(TaskBlock(time_nextday630, time_nextday730, task2, 1), 
-            schedule_with_earliest_start(task2, time8, start, end, [block_830_1930], zero, five))
+        self.assertEqual(TaskBlock(time_nextday630, time_nextday730, task22, 2), 
+            schedule_with_earliest_start(task22, time8, start, end, [block_830_1930], zero, five))
         
     def test_schedule(self):
         self.assertEqual([TaskBlock(time8, time9, task3, 1)], 

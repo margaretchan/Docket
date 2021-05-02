@@ -1,4 +1,4 @@
-# Schedule Me! 
+# Docket
 ## **Flask Installation:**  
 ##### 1. Start Virtual Environment:  
 - For Mac:   

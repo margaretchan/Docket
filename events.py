@@ -13,13 +13,22 @@ Task is an assignment or job which must be completed by a specific due date.
 """
 class Task:
     def __init__(self, name, due, expected_duration, num_blocks, priority=0, 
-                 released=datetime.datetime.now()):
+                 start=datetime.datetime.now()):
         self.name = name
         self.due = due
         self.expected_duration = expected_duration
         self.num_blocks = num_blocks
         self.priority = priority
+        self.start = start
         self.num_blocks_assigned = 0
+        
+    def __eq__(self, other):
+        if (isinstance(other, Task)):
+            return self.name == other.name and self.due == other.due and \
+                self.expected_duration == other.expected_duration and \
+                self.num_blocks == other.num_blocks and self.priority == other.priority and \
+                self.start == other.start
+        return False
 
 
 """ 
@@ -34,6 +43,11 @@ class BusyBlock:
         self.name = name
         self.start_time = start_time
         self.end_time = end_time
+    
+    def __eq__(self, other):
+        if (isinstance(other, BusyBlock)):
+            return self.start_time == other.start_time and self.end_time == other.end_time
+        return False
 
 
 """ 
@@ -50,3 +64,8 @@ class TaskBlock:
         self.end_time = end_time
         self.task = task
         self.task_block_num = task_block_num
+        
+    def __eq__(self, other):
+        if (isinstance(other, TaskBlock)):
+            return self.start_time == other.start_time and self.end_time == other.end_time and self.task == other.task
+        return False

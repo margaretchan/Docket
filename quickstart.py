@@ -46,7 +46,7 @@ def getStartEndDates():
     dates = []
     for i in range(delta.days + 1):
         day = sunday_start + datetime.timedelta(days=i)
-        dates.append(day.strftime("%m/%d/%Y"))
+        dates.append(day.strftime("%m.%d"))
     return dates
 
 def getCalendarInfo():
@@ -97,10 +97,11 @@ def populateBusyBlocks():
     if not events:
         print('No upcoming events found.')
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        end = event['end'].get('dateTime', event['end'].get('date'))
-        name = event['summary']
-        busyBlocksImported.append(BusyBlock(name, start, end))
+        if(event['start'].get('dateTime')!= None and event['end'].get('dateTime') != None):
+            start = datetime.datetime.fromisoformat(event['start'].get('dateTime'))
+            end = datetime.datetime.fromisoformat(event['end'].get('dateTime'))
+            name = event['summary']
+            busyBlocksImported.append(BusyBlock(name, start, end))    
     return busyBlocksImported
 
 def populateCalendar():
@@ -117,11 +118,11 @@ def populateCalendar():
         end = datetime.datetime.fromisoformat(data)
         name = event['summary']
         if(calendarEvents[start.weekday()] == None):
-            calendarEvents[start.weekday()] = [{"start_day": start.date().strftime("%m/%d/%Y"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m/%d/%Y"), "end_time": end.time().strftime("%H:%M"), "name": name}]
+            calendarEvents[start.weekday()] = [{"start_day": start.date().strftime("%m.%d"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m.%d"), "end_time": end.time().strftime("%H:%M"), "name": name}]
         else:   
-            calendarEvents[start.weekday()].append({"start_day": start.date().strftime("%m/%d/%Y"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m/%d/%Y"), "end_time": end.time().strftime("%H:%M"), "name": name})
+            calendarEvents[start.weekday()].append({"start_day": start.date().strftime("%m.%d"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m.%d"), "end_time": end.time().strftime("%H:%M"), "name": name})
     return calendarEvents
 
 
 if __name__ == '__main__':
-    getCalendarInfo()
+    populateBusyBlocks()

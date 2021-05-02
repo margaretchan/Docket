@@ -135,7 +135,7 @@ def addTaskToEvent(task_blocks, events):
                     "start_time": block.start_time.time().strftime("%H:%M"), 
                     "end_day": block.end_time.date().strftime("%m.%d"), 
                     "end_time": block.end_time.time().strftime("%H:%M"), 
-                    "name": block.task.name + "("+str(block.task_block_num) + ")"
+                    "name": block.task.name + "("+str(block.task_block_num) + "/" + str(block.task.num_blocks)+")"
         }
         events[block.start_time.weekday()].append(new_block)
     return events

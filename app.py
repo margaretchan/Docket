@@ -28,9 +28,12 @@ def landing():
 def main():
     print(request.form['start_day'])
     session['start_day'] = int(request.form['start_day'].split(":", 1)[0])
+    session['start_day_string'] = request.form['start_day']
     session['end_day'] = int(request.form['end_day'].split(":", 1)[0])
+    session['end_day_string'] = request.form['end_day']
+
     session['break'] = int(request.form['break'])
-    finish_hours = int(request.form['finish_hours'])
+    session['finish_hours'] = int(request.form['finish_hours'])
     
     events = populateCalendar()
     dates = getStartEndDates() 
@@ -59,11 +62,18 @@ def addAssignment():
     priority = int(request.form['priority'])
     blocks = int(request.form['blocks'])
     hours = int(request.form['hours'])
+    start_time = datetime.strptime(str(session['start_day'])+ ":00", '%H:%M').time()
+    end_time = datetime.strptime(str(session['end_day'])+ ":00", '%H:%M').time()
+    leeway = timedelta(hours = session['finish_hours'])
+    breaks = timedelta(minutes = session['break'])
+
+
+
     
     busy_blocks = populateBusyBlocks()
     task = Task(name, deadline, timedelta(hours = hours), blocks, priority, start)
 
-    task_blocks = schedule([task], busy_blocks)
+    task_blocks = schedule([task], busy_blocks, start_time, end_time, leeway, breaks )
     new_events = addTaskToEvent(task_blocks, session['events'])
     dates = getStartEndDates() 
     new_assign = {

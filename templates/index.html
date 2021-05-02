@@ -524,7 +524,7 @@
 
                 <ul>
                   {% for i in events[6] %}
-                  {%if (i['start_day'] == dates[index]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%} <li
+                  {%if (i['start_day'] == dates[index])%} <li
                     class="cd-schedule__event">
                     {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
@@ -547,7 +547,7 @@
 
               <ul>
                 {% for i in events[0] %}
-                {%if (i['start_day'] == dates[index+1]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%} 
+                {%if (i['start_day'] == dates[index+1])%} 
                 <li class="cd-schedule__event">
                   {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
@@ -571,7 +571,7 @@
 
                 <ul>
                 {% for i in events[1] %}
-                {%if (i['start_day'] == dates[index+2]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%}<li class="cd-schedule__event">
+                {%if (i['start_day'] == dates[index+2])%}<li class="cd-schedule__event">
                   {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -595,7 +595,7 @@
 
               <ul>
                 {% for i in events[2] %}
-                {%if (i['start_day'] == dates[index+3]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%}<li class="cd-schedule__event">
+                {%if (i['start_day'] == dates[index+3])%}<li class="cd-schedule__event">
                   {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -618,7 +618,7 @@
                 <div class="cd-schedule__top-info"><span id="day-label">THUR {{dates[index+4]}}</span></div>
               <ul>
                 {% for i in events[3] %}
-                {%if (i['start_day'] == dates[index+4]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%} <li class="cd-schedule__event">
+                {%if (i['start_day'] == dates[index+4])%} <li class="cd-schedule__event">
                   {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -641,7 +641,7 @@
 
               <ul>
                 {% for i in events[4] %}
-                {%if (i['start_day'] == dates[index+5]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%} <li class="cd-schedule__event">
+                {%if (i['start_day'] == dates[index+5])%} <li class="cd-schedule__event">
                   {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -665,7 +665,7 @@
 
               <ul>
                 {% for i in events[5] %}
-                {%if (i['start_day'] == dates[index+6]) and (i['start_time'] >= start_hour|string +":00") and (i['start_time'] <= end_hour|string +":00")%} <li class="cd-schedule__event">
+                {%if (i['start_day'] == dates[index+6])%} <li class="cd-schedule__event">
                   {%if i['name'].split('(',1)[0] in assignment_names %}
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">

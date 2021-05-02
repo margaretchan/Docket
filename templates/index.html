@@ -1,271 +1,296 @@
 <!doctype html>
 <html lang="en">
-    <style>
-      /* The Modal (background) */
+<style>
+  /* The Modal (background) */
 
-    body{
-      font-family: dmsans-regular;
-    }
-    h2#modal{
-      font-family: 'DM Sans', sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 20px;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
-    }
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 3; /* Sit on top */
-      padding-top: 20px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-    
-    label#modal-label{
-      font-family: 'DM Sans', sans-serif;
-      font-style: bold;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 4px;
-      color: #C2C2C2;
-    }
-    ::placeholder{
-      color: #C1C1C1;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-    }
-    .modal-input{
-      margin-bottom: 12px;
-      margin-top: 2px;
-      border: 1px solid #96B1D1;
-      border-radius: 5px;
-      padding: 8px;
-      font-size: 16px;
-    }
+  body {
+    font-family: dmsans-regular;
+  }
 
-    /* Modal Content */
-    .modal-content {
-      z-index: 9; 
-      background-color: #fefefe;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 36px;
-      border: 1px solid #888;
-      width: 30%;
-      font-family: 'DM Sans', sans-serif;
-      font-style: normal;
-      border-radius: 10px;
-    }
-    button#myBtn{
-      background-color: #96B1D1;
-      border-radius: 100px;
-      color: white;
-      font-family: 'DM Sans', sans-serif;
-      font-style: normal;
-      font-weight: 700;
-      border: 0px;
-      font-size: 14px;
-      letter-spacing: 2px;
-      padding: 12px 24px;
-      margin-top: 12px;
-    }
-    button#myBtn:hover,
-    button#myBtn:focus {
-      background-color: #7995B7;
-    }
+  h2#modal {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
 
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 3;
+    /* Sit on top */
+    padding-top: 20px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
 
-    /* The Close Button */
-    .close {
-      color: #A1A1A1;
-      /* float: right; */
-      font-size: 14px;
-      font-weight: bold;
-      border: 1px solid #A2A2A2;
-      box-sizing: border-box;
-      border-radius: 100px;
-      letter-spacing: 2px;
-      padding: 8px 24px;
-    }
+  label#modal-label {
+    font-family: 'DM Sans', sans-serif;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #C2C2C2;
+  }
 
-    .close:hover,
-    .close:focus {
-      border: 1px solid #626262;
-      color: #626262;
-    }
-    input#modal-submit{
-      background-color: #96B1D1;
-      border: 0px;
-      font-weight: bold;
-      box-sizing: border-box;
-      border-radius: 100px;
-      letter-spacing: 2px;
-      padding: 8px 24px;
-      font-size: 14px;
-      float: right;
-      color: white;
-    }
-    input#modal-submit:hover,
-    input#modal-submit:focus {
-      background-color: #7995B7;
-    }
+  ::placeholder {
+    color: #C1C1C1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+  }
 
-    .modal-buttons{
-      margin-top: 20px;
-    }
-    a.week {
-      text-decoration: none;
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: none;
-      color: #96B1D1;
-      font-size:36px;
-    }
+  .modal-input {
+    margin-bottom: 12px;
+    margin-top: 2px;
+    border: 1px solid #96B1D1;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+  }
 
-    a.week:hover {
-      color: #7995B7;
-    }
+  /* Modal Content */
+  .modal-content {
+    z-index: 9;
+    background-color: #fefefe;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 36px;
+    border: 1px solid #888;
+    width: 30%;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    border-radius: 10px;
+  }
+
+  button#myBtn {
+    background-color: #96B1D1;
+    border-radius: 100px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    border: 0px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 12px 24px;
+    margin-top: 12px;
+  }
+
+  button#myBtn:hover,
+  button#myBtn:focus {
+    background-color: #7995B7;
+  }
 
 
-    .button.disabled {
-      opacity: 0.65; 
-      cursor: not-allowed;
-    }
+  /* The Close Button */
+  .close {
+    color: #A1A1A1;
+    /* float: right; */
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #A2A2A2;
+    box-sizing: border-box;
+    border-radius: 100px;
+    letter-spacing: 2px;
+    padding: 8px 24px;
+  }
 
-    .accordion {
-      cursor: pointer;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      transition: 0.4s;
-      filter: drop-shadow(0px 0px 3px #8BB790);
-      background: #FFFFFF;
-      border-radius: 8px;
+  .close:hover,
+  .close:focus {
+    border: 1px solid #626262;
+    color: #626262;
+  }
 
-      font-size: 14px;
-      line-height: 131.34%;
+  input#modal-submit {
+    background-color: #96B1D1;
+    border: 0px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: 100px;
+    letter-spacing: 2px;
+    padding: 8px 24px;
+    font-size: 14px;
+    float: right;
+    color: white;
+  }
 
-      letter-spacing: 0.03em;
+  input#modal-submit:hover,
+  input#modal-submit:focus {
+    background-color: #7995B7;
+  }
 
-      color: #8BB790;
+  .modal-buttons {
+    margin-top: 20px;
+  }
 
-      font-family: DM Sans;
-      font-style: normal;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
+  a.week {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: none;
+    color: #96B1D1;
+    font-size: 36px;
+  }
 
-    .active, .accordion:hover {
-      filter: drop-shadow(0px 0px 6px #8BB790);
-    }
+  a.week:hover {
+    color: #7995B7;
+  }
 
-    .accordion:after {
-      content: '\002B';
-      color: #777;
-      font-weight: bold;
-      float: right;
-      margin-left: 5px;
-    }
 
-    .active:after {
-      content: "\2212";
-    }
+  .button.disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
 
-    .panel {
-      padding: 0 24px;
-      background: #FFFFFF;
-      box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      font-size:14px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
-    }
-    .center {
-      margin: auto;
-      width: 50%;
-      padding: 10px;
-      text-align: center;
-      font-size: 24px;
-      color: #96B1D1;
-      font-family: 'DM Sans', sans-serif;
-      font-style: normal;
-    }
-    
-    .wrapper{
-      
-    }
+  .accordion {
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    filter: drop-shadow(0px 0px 3px #8BB790);
+    background: #FFFFFF;
+    border-radius: 8px;
 
-    /* Assignment Panel */
+    font-size: 14px;
+    line-height: 131.34%;
 
-    div#assignment-container{
-      background-color: white;
-      width: 25%;
-      height: 100%; /* Full-height: remove this if you want "auto" height */
-      position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-      z-index: 1; /* Stay on top */
-      top: 0; /* Stay at the top */
-      left: 0;
-      background-color: white; /* Black */
-      overflow-x: hidden; /* Disable horizontal scroll */
-      padding: 36px;
-      box-shadow: 2px -4px 20px rgba(0, 0, 0, 0.1);
-    }
+    letter-spacing: 0.03em;
 
-    .section-title{
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
-      line-height: 131.34%;
-      /* or 26px */
-      letter-spacing: 0.12em;
-      margin-bottom: 24px;
-      color: #BCBCBC;
-    }
+    color: #8BB790;
 
-    /* Schedule View */
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
 
-    .right-side{
-      width: 72%;
-      margin-top: 36px;
-      margin-left: 20px;
-      margin-right: 20px;
-      height: auto;
-      float: right;
-      z-index: -1;
-      position: relative;
-      float: right;
-    }
-    div#schedule-container{
-      background-color: white;
-      width: 100%;
-      height: auto;
-      
-      float: right;
-      box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      
-    }
-    div#calendar-section{
-      font-family: DM Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 131.34%;
-      /* identical to box height, or 16px */
+  .active,
+  .accordion:hover {
+    filter: drop-shadow(0px 0px 6px #8BB790);
+  }
 
-      letter-spacing: 0.03em;
-    }
+  .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
 
+  .active:after {
+    content: "\2212";
+  }
+
+  .panel {
+    padding: 0 24px;
+    background: #FFFFFF;
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 14px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: #96B1D1;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+  }
+
+  .wrapper {}
+
+  /* Assignment Panel */
+
+  div#assignment-container {
+    background-color: white;
+    width: 25%;
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: white;
+    /* Black */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding: 36px;
+    box-shadow: 2px -4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-title {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 131.34%;
+    /* or 26px */
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+    color: #BCBCBC;
+  }
+
+  /* Schedule View */
+
+  .right-side {
+    width: 72%;
+    margin-top: 36px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: auto;
+    float: right;
+    z-index: -1;
+    position: relative;
+    float: right;
+  }
+
+  div#schedule-container {
+    background-color: white;
+    width: 100%;
+    height: auto;
+
+    float: right;
+    box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+  }
+
+  div#calendar-section {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 131.34%;
+    /* identical to box height, or 16px */
+
+    letter-spacing: 0.03em;
+  }
 </style>
 
 <head>
@@ -274,349 +299,357 @@
   <script>document.getElementsByTagName("html")[0].className += " js";</script>
   <link rel="stylesheet" href="static/css/style.css">
   <title>Docket</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
 
 </head>
 
 <body style="background-image: url('/static/images/main_background.png'); background-repeat: no-repeat;">
-  
+
   <div class="wrapper">
-  <div id="assignment-container">
-    <p class="section-title">ASSIGNMENTS</p>
-        <!-- Trigger/Open The Modal -->
-    
+    <div id="assignment-container">
+      <p class="section-title">ASSIGNMENTS</p>
+      <!-- Trigger/Open The Modal -->
 
-    <!--- Assignments --->
-    {%for i in assignments%}
-    <button class="accordion">{{i['name']}}</button>
-    <div class="panel">
-      <p><b>{{i['blocks']}}</b> blocks</p>
-      <p><b>{{i['priority']}}</b> priority</p>
-      <p><b>{{i['hours']}}</b> hours</p>
-      <p><b>Due</b> {{i['deadline']}} </p>
-    </div>
-    {%endfor%}
 
-<button id="myBtn"> + ADD ASSIGNMENT</button>
-      <div id="initPage" class="modal" id = "onload">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-        
-        <h2 id="initPage">Welome, let's get started!</h2>
-        <form action="{{url_for('main') }}" method="POST">
-
-          <label id="modal-label" for="start_day">MY DAY STARTS AT</label><br>
-          <input class="modal-input" type="time" id="start_day" name="start_day" required><br>
-          <label id="modal-label" for="end_day">MY DAY ENDS AT</label><br>
-          <input class="modal-input" type="time" id="end_day" name="end_day" required><br>
-          <label id="modal-label" for="finish_hours">FINISH ASSIGNMENT</label><br>
-          <input class="modal-input" type="number" id="finish_hours" name="finish_hours" required> before the due date<br>
-
-          <label id="modal-label" for="break">BREAK DURATION</label><br>
-          <input class="modal-input" type="number" id="break" name="break" required> minutes<br>
-          
-          <span id="initClose" class="close">SKIP</span>
-          <input type="submit" id="modal-submit" value="DONE">
-        
-      </form>
-
-      
+      <!--- Assignments --->
+      {%for i in assignments%}
+      <button class="accordion">{{i['name']}}</button>
+      <div class="panel">
+        <p><b>{{i['blocks']}}</b> blocks</p>
+        <p><b>{{i['priority']}}</b> priority</p>
+        <p><b>{{i['hours']}}</b> hours</p>
+        <p><b>Due</b> {{i['deadline']}} </p>
       </div>
+      {%endfor%}
 
-    </div>
+      <button id="myBtn"> + ADD ASSIGNMENT</button>
+      <div id="initPage" class="modal" id="onload">
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
 
-      <!-- Modal content -->
-      <div class="modal-content">
-        
-        <h2 id="modal">Add Assignment</h2>
-        <form action="{{url_for('addAssignment') }}" method="POST">
+          <h2 id="initPage">Welome, let's get started!</h2>
+          <form action="{{url_for('main') }}" method="POST">
 
-        <label id="modal-label" for="name">NAME</label><br>
-        <input class="modal-input" type="text" id="name" name="name" placeholder="e.g. Sociology Paper" required><br>
-        <label id="modal-label" for="deadline">DEADLINE</label><br>
-        <input class="modal-input" type="datetime-local" id="deadline" name="deadline" ><br>
-        <label id="modal-label" for="start">START DATE</label><br>
-        <input class="modal-input" type="datetime-local" id="start"  name="start" required><br>
+            <label id="modal-label" for="start_day">MY DAY STARTS AT</label><br>
+            <input class="modal-input" type="time" id="start_day" name="start_day" required><br>
+            <label id="modal-label" for="end_day">MY DAY ENDS AT</label><br>
+            <input class="modal-input" type="time" id="end_day" name="end_day" required><br>
+            <label id="modal-label" for="finish_hours">FINISH ASSIGNMENT</label><br>
+            <input class="modal-input" type="number" id="finish_hours" name="finish_hours" required> hours before the
+            due date<br>
 
-        <label id="modal-label" for="priority">PRIORITY</label><br>
-        <select class="modal-input" name="priority" id="priority" >
-          <option value="0">Low</option>
-          <option value="1">Medium</option>
-          <option value="2">High</option>
-        </select><br>
+            <label id="modal-label" for="break">BREAK DURATION</label><br>
+            <input class="modal-input" type="number" id="break" name="break" required> minutes<br>
 
-        <label id="modal-label" for="blocks"># BLOCKS</label><br>
-        <input class="modal-input" type="number" id="blocks" name="blocks" required><br>
+            <span id="initClose" class="close">SKIP</span>
+            <input type="submit" id="modal-submit" value="DONE">
 
-        <label id="modal-label" for="hours">EST. TIME (HRS):</label><br>
-        <input class="modal-input" type="number" id="hours" name="hours" required><br>
-        
-        <div class="modal-buttons">
-          <span class="close">CLOSE</span>
-          <input type="submit" id="modal-submit" value="ADD">
+          </form>
+
+
         </div>
-        
-      </form>
 
-      
       </div>
 
-    </div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
 
-    
-  </div>
+        <!-- Modal content -->
+        <div class="modal-content">
 
-  <div class="right-side">
-    <p class="section-title">MY SCHEDULE</p>
-  <div id="schedule-container">
-    <div class = "center">
-      {%if index == 0 %}
-      <a class="button disabled week"><b>&#8249;</b></a>
-      {%else%}
-      <a href="{{ url_for('backPage', index = index)}}" class="week"><b>&#8249;</b></a>
-      {%endif%}
-      <text>{{dates[index]}} - {{dates[index + 6]}}</text>
-      {%if index == 21 %}
-      <a  class="button disabled week"><b>&#8250;</b></a>
-      {%else%}
-      <a href="{{ url_for('nextPage', index = index)}}" class="week"><b>&#8250;</b></a>
-      {%endif%}
-    </div>
-    <div id ="calendar-section" class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
-    <div class="cd-schedule__timeline">
-      <ul>
-          {%for i in range(end_hour - start_hour) %}
-            <li><span>{{start_hour + i}}: 00 </span></li>
-            {% endfor %}
+          <h2 id="modal">Add Assignment</h2>
+          <form action="{{url_for('addAssignment') }}" method="POST">
 
-      </ul>
-    </div> <!-- .cd-schedule__timeline -->
-  
-    <div class="cd-schedule__events">
-      <ul>
-        <li class="cd-schedule__group">
-            <div class="cd-schedule__top-info"><span>SUN {{dates[index]}} </span></div>
-    
-            <ul>
-                {% for i in events[6] %}
-                {%if (i['start_day'] == dates[index]) and (i['start_day'] <= i['start_time']) %}
-                    <li class="cd-schedule__event">
-                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-1">
-                        <em class="cd-schedule__name">{{i['name']}}</em>
-                    </a>
-                    </li>
-                {%endif%}
-                {%endfor%}
-            </ul>
-          </li>
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>MON {{dates[index+1]}}</span></div>
-  
-          <ul>
-              {% for i in  events[0] %}
-                {%if (i['start_day'] == dates[index+1]) and (i['start_day'] <= i['start_time'])%}
-                    <li class="cd-schedule__event">
-                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-2">
-                        <em class="cd-schedule__name">{{i['name']}}</em>
-                    </a>
-                    </li>
-                {%endif%}
-                {%endfor%}
+            <label id="modal-label" for="name">NAME</label><br>
+            <input class="modal-input" type="text" id="name" name="name" placeholder="e.g. Sociology Paper"
+              required><br>
+            <label id="modal-label" for="deadline">DEADLINE</label><br>
+            <input class="modal-input" type="datetime-local" id="deadline" name="deadline"><br>
+            <label id="modal-label" for="start">START DATE</label><br>
+            <input class="modal-input" type="datetime-local" id="start" name="start" required><br>
 
-          </ul>
-        </li>
-  
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>TUE {{dates[index+2]}}</span></div>
-  
-          <ul>
-            {% for i in  events[1] %}
-                {%if (i['start_day'] == dates[index+2]) and (i['start_day'] <= i['start_time'])%}
+            <label id="modal-label" for="priority">PRIORITY</label><br>
+            <select class="modal-input" name="priority" id="priority">
+              <option value="0">Low</option>
+              <option value="1">Medium</option>
+              <option value="2">High</option>
+            </select><br>
 
-                    <li class="cd-schedule__event">
-                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-3">
-                        <em class="cd-schedule__name">{{i['name']}}</em>
-                    </a>
-                    </li>
-                {%endif%}
+            <label id="modal-label" for="blocks"># BLOCKS</label><br>
+            <input class="modal-input" type="number" id="blocks" name="blocks" required><br>
 
-                {%endfor%}
+            <label id="modal-label" for="hours">EST. TIME (HRS):</label><br>
+            <input class="modal-input" type="number" id="hours" name="hours" required><br>
 
-          </ul>
-        </li>
-  
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>WED {{dates[index+3]}}</span></div>
-  
-          <ul>
-            {% for i in  events[2] %}
-                {%if (i['start_day'] == dates[index+3]) and (i['start_day'] <= i['start_time'])%}
+            <div class="modal-buttons">
+              <span class="close">CLOSE</span>
+              <input type="submit" id="modal-submit" value="ADD">
+            </div>
 
-                <li class="cd-schedule__event">
-                <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-4">
-                    <em class="cd-schedule__name">{{i['name']}}</em>
-                </a>
-                </li>
-                {%endif%}
+          </form>
 
-            {%endfor%}
-          </ul>
-        </li>
-  
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>THUR {{dates[index+4]}}</span></div>
-  
-          <ul>
-            {% for i in  events[3] %}
-                {%if (i['start_day'] == dates[index+4]) and (i['start_day'] <= i['start_time'])%}
 
-                <li class="cd-schedule__event">
-                <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-1">
-                    <em class="cd-schedule__name">{{i['name']}}</em>
-                </a>
-                </li>
-                {%endif%}
-
-            {%endfor%}
-
-          </ul>
-        </li>
-  
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>FRI {{dates[index+5]}}</span></div>
-  
-          <ul>
-            {% for i in  events[4] %}
-                {%if (i['start_day'] == dates[index+5]) and (i['start_day'] <= i['start_time'])%}
-
-                <li class="cd-schedule__event">
-                <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-2">
-                    <em class="cd-schedule__name">{{i['name']}}</em>
-                </a>
-                </li>
-                {%endif%}
-
-            {%endfor%}
-          </ul>
-        </li>
-
-        <li class="cd-schedule__group">
-            <div class="cd-schedule__top-info"><span>SAT {{dates[index+6]}}</span></div>
-    
-            <ul>
-                {% for i in  events[5] %}
-                    {%if (i['start_day'] == dates[index+6]) and (i['start_day'] <= i['start_time'])%}
-
-                    <li class="cd-schedule__event">
-                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit" data-event="event-3">
-                        <em class="cd-schedule__name">{{i['name']}}</em>
-                    </a>
-                    </li>
-                    {%endif%}
-
-                {%endfor%}
-            </ul>
-          </li>
-          
-      </ul>
-    </div>
-  
-    <div class="cd-schedule-modal">
-      <header class="cd-schedule-modal__header">
-        <div class="cd-schedule-modal__content">
-          <span class="cd-schedule-modal__date"></span>
-          <h3 class="cd-schedule-modal__name"></h3>
         </div>
-  
-        <div class="cd-schedule-modal__header-bg"></div>
-      </header>
-  
-      <div class="cd-schedule-modal__body">
-        <div class="cd-schedule-modal__event-info"></div>
-        <div class="cd-schedule-modal__body-bg"></div>
+
       </div>
-  
-      <a href="#0" class="cd-schedule-modal__close text-replace">Close</a>
+
+
     </div>
-  
-    <div class="cd-schedule__cover-layer"></div>
-  </div> <!-- .cd-schedule -->
+
+    <div class="right-side">
+      <p class="section-title">MY SCHEDULE</p>
+      <div id="schedule-container">
+        <div class="center">
+          {%if index == 0 %}
+          <a class="button disabled week"><b>&#8249;</b></a>
+          {%else%}
+          <a href="{{ url_for('backPage', index = index)}}" class="week"><b>&#8249;</b></a>
+          {%endif%}
+          <text>{{dates[index]}} - {{dates[index + 6]}}</text>
+          {%if index == 21 %}
+          <a class="button disabled week"><b>&#8250;</b></a>
+          {%else%}
+          <a href="{{ url_for('nextPage', index = index)}}" class="week"><b>&#8250;</b></a>
+          {%endif%}
+        </div>
+        <div id="calendar-section"
+          class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+          <div class="cd-schedule__timeline">
+            <ul>
+              {%for i in range(end_hour - start_hour) %}
+              <li><span>{{start_hour + i}}: 00 </span></li>
+              {% endfor %}
+
+            </ul>
+          </div> <!-- .cd-schedule__timeline -->
+
+          <div class="cd-schedule__events">
+            <ul>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>SUN {{dates[index]}} </span></div>
+
+                <ul>
+                  {% for i in events[6] %}
+                  {%if (i['start_day'] == dates[index]) and (i['start_day'] <= i['start_time']) %} <li
+                    class="cd-schedule__event">
+                    <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                      data-event="event-1">
+                      <em class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+              </li>
+              {%endif%}
+              {%endfor%}
+            </ul>
+            </li>
+            <li class="cd-schedule__group">
+              <div class="cd-schedule__top-info"><span>MON {{dates[index+1]}}</span></div>
+
+              <ul>
+                {% for i in events[0] %}
+                {%if (i['start_day'] == dates[index+1]) and (i['start_day'] <= i['start_time'])%} <li
+                  class="cd-schedule__event">
+                  <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                    data-event="event-2">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                  </a>
+            </li>
+            {%endif%}
+            {%endfor%}
+
+            </ul>
+            </li>
+
+            <li class="cd-schedule__group">
+              <div class="cd-schedule__top-info"><span>TUE {{dates[index+2]}}</span></div>
+
+              <ul>
+                {% for i in events[1] %}
+                {%if (i['start_day'] == dates[index+2]) and (i['start_day'] <= i['start_time'])%} <li
+                  class="cd-schedule__event">
+                  <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                    data-event="event-3">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                  </a>
+            </li>
+            {%endif%}
+
+            {%endfor%}
+
+            </ul>
+            </li>
+
+            <li class="cd-schedule__group">
+              <div class="cd-schedule__top-info"><span>WED {{dates[index+3]}}</span></div>
+
+              <ul>
+                {% for i in events[2] %}
+                {%if (i['start_day'] == dates[index+3]) and (i['start_day'] <= i['start_time'])%} <li
+                  class="cd-schedule__event">
+                  <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                    data-event="event-4">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                  </a>
+            </li>
+            {%endif%}
+
+            {%endfor%}
+            </ul>
+            </li>
+
+            <li class="cd-schedule__group">
+              <div class="cd-schedule__top-info"><span>THUR {{dates[index+4]}}</span></div>
+
+              <ul>
+                {% for i in events[3] %}
+                {%if (i['start_day'] == dates[index+4]) and (i['start_day'] <= i['start_time'])%} <li
+                  class="cd-schedule__event">
+                  <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                    data-event="event-1">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                  </a>
+            </li>
+            {%endif%}
+
+            {%endfor%}
+
+            </ul>
+            </li>
+
+            <li class="cd-schedule__group">
+              <div class="cd-schedule__top-info"><span>FRI {{dates[index+5]}}</span></div>
+
+              <ul>
+                {% for i in events[4] %}
+                {%if (i['start_day'] == dates[index+5]) and (i['start_day'] <= i['start_time'])%} <li
+                  class="cd-schedule__event">
+                  <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                    data-event="event-2">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                  </a>
+            </li>
+            {%endif%}
+
+            {%endfor%}
+            </ul>
+            </li>
+
+            <li class="cd-schedule__group">
+              <div class="cd-schedule__top-info"><span>SAT {{dates[index+6]}}</span></div>
+
+              <ul>
+                {% for i in events[5] %}
+                {%if (i['start_day'] == dates[index+6]) and (i['start_day'] <= i['start_time'])%} <li
+                  class="cd-schedule__event">
+                  <a data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
+                    data-event="event-3">
+                    <em class="cd-schedule__name">{{i['name']}}</em>
+                  </a>
+            </li>
+            {%endif%}
+
+            {%endfor%}
+            </ul>
+            </li>
+
+            </ul>
+          </div>
+
+          <div class="cd-schedule-modal">
+            <header class="cd-schedule-modal__header">
+              <div class="cd-schedule-modal__content">
+                <span class="cd-schedule-modal__date"></span>
+                <h3 class="cd-schedule-modal__name"></h3>
+              </div>
+
+              <div class="cd-schedule-modal__header-bg"></div>
+            </header>
+
+            <div class="cd-schedule-modal__body">
+              <div class="cd-schedule-modal__event-info"></div>
+              <div class="cd-schedule-modal__body-bg"></div>
+            </div>
+
+            <a href="#0" class="cd-schedule-modal__close text-replace">Close</a>
+          </div>
+
+          <div class="cd-schedule__cover-layer"></div>
+        </div> <!-- .cd-schedule -->
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
+  </div>
 
   <script src="static/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
   <script src="static/js/main.js"></script>
   <script type="text/javascript">
-      var modalInit = document.getElementById("initPage");
-      var span_close = document.getElementById("initClose");
+    var modalInit = document.getElementById("initPage");
+    var span_close = document.getElementById("initClose");
 
-      window.onload = function() {
-          // sessionStorage["PopupShown"] = 'yes';
-          modalInit.style.display = "block";
-      };
+    window.onload = function () {
+      // sessionStorage["PopupShown"] = 'yes';
+      modalInit.style.display = "block";
+    };
 
-      // When the user clicks on <span> (x), close the modal
-      span_close.onclick = function() {
+    // When the user clicks on <span> (x), close the modal
+    span_close.onclick = function () {
+      modalInit.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modalInit) {
         modalInit.style.display = "none";
       }
-    
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modalInit) {
-          modalInit.style.display = "none";
-        }
-      }
-    
+    }
+
   </script>
   <script>
     // Get the modal
     var modal = document.getElementById("myModal");
-    
+
     // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
-    
+
     // Get the <span> element that closes the modal
     var span = document.getElementById("close");
-    
+
     // When the user clicks the button, open the modal 
-    btn.onclick = function() {
+    btn.onclick = function () {
       modal.style.display = "block";
     }
-    
+
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
     }
-    
+
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
     }
-    </script>
-    <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-      
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var panel = this.nextElementSibling;
-          if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-          } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-          } 
-        });
-      }
-      </script>
-      
+  </script>
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+
 </body>
+
 </html>

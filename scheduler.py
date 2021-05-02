@@ -64,20 +64,20 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
     targeted_finish = task.due - leeway
     task_block_num = task.num_blocks - task.num_blocks_assigned
     
-    # remove all scheduled blocks that end before the earliest start time - buffer
-    starts_after_start_time = lambda block: block.start_time > start - buffer and block.start_time < task.due
+    # remove all scheduled blocks that end before the earliest start time - buffer or start after the deadline
+    starts_after_start_time = lambda block: block.end_time > start - buffer and block.start_time < task.due
     blocks_before_task_due = filter(starts_after_start_time, scheduled_blocks)
     
     # sort with earliest event first
     sorted_blocks = sorted(blocks_before_task_due, key=lambda block: block.start_time)
     
     end_of_start_day = datetime.combine(start.date(), day_end_time)
-    start_of_next_day = datetime.combine(start.date(), day_start_time) + timedelta(days=1)
+    start_of_start_day = datetime.combine(start.date(), day_start_time)
+    next_start = start_of_start_day if start.time() < day_start_time else start_of_start_day + timedelta(days=1)
     first_feasible_start = start if end_of_start_day - start >= block_duration and \
                                     start.time() > day_start_time and \
                                     start.time() < day_end_time \
-                                 else start_of_next_day
-
+                                 else next_start
     
     ## Case 1: no scheduled blocks OR 
     #   new task block can be scheduled before the first already scheduled task block
@@ -97,7 +97,6 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
         earliest_start = this_block.end_time + buffer
         latest_end = next_block.start_time - buffer
         end_of_free_period = end_of_this_block_day if end_of_this_block_day < latest_end else latest_end
-        
         # Case 2.1: if there is enough time from end of current block + buffer to end of free period
         if end_of_free_period - earliest_start >= block_duration:
             task.num_blocks_assigned += 1

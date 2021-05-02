@@ -70,3 +70,8 @@ class TaskBlock:
             return self.start_time == other.start_time and self.end_time == other.end_time and \
               self.task == other.task and self.task_block_num == other.task_block_num
         return False
+    
+    def __repr__(self):
+        return "TaskBlock(start_time = " + self.start_time.strftime("%m/%d, %H:%M") + \
+            ",\n\tend_time = " + self.end_time.strftime("%m/%d, %H:%M") + \
+            ",\n\ttask = " + self.task.name + ",\n\ttask_block_num = " + str(self.task_block_num)

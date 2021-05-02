@@ -191,15 +191,15 @@
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" placeholder="e.g. Sociology Paper" required><br>
         <label for="deadline">Deadline:</label><br>
-        <input type="date" id="deadline" name="deadline"><br>
+        <input type="datetime-local" id="deadline" name="deadline"><br>
         <label for="start">Start Date:</label><br>
-        <input type="date" id="start" name="start" required><br>
+        <input type="datetime-local" id="start" name="start" required><br>
 
         <label for="priority">Priority:</label><br>
         <select name="priority" id="priority">
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+          <option value="0">Low</option>
+          <option value="1">Medium</option>
+          <option value="2">High</option>
         </select><br>
 
         <label for="blocks"># Blocks:</label><br>

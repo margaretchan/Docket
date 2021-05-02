@@ -97,10 +97,11 @@ def populateBusyBlocks():
     if not events:
         print('No upcoming events found.')
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        end = event['end'].get('dateTime', event['end'].get('date'))
-        name = event['summary']
-        busyBlocksImported.append(BusyBlock(name, start, end))
+        if(event['start'].get('dateTime')!= None and event['end'].get('dateTime') != None):
+            start = datetime.datetime.fromisoformat(event['start'].get('dateTime'))
+            end = datetime.datetime.fromisoformat(event['end'].get('dateTime'))
+            name = event['summary']
+            busyBlocksImported.append(BusyBlock(name, start, end))    
     return busyBlocksImported
 
 def populateCalendar():
@@ -124,4 +125,4 @@ def populateCalendar():
 
 
 if __name__ == '__main__':
-    getCalendarInfo()
+    populateBusyBlocks()

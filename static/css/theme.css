@@ -1,36 +1,15 @@
 @charset "utf-8";
 
-@font-face {
-    font-family: dmsans-regular;
-    src: url('/fonts/DMSans-Regular.ttf');
-}
-@font-face {
-    font-family: dmsans-bold;
-    src: url('/fonts/DMSans-Bold.ttf');
-}
-@font-face {
-    font-family: dmsans-medium;
-    src: url('/fonts/DMSans-Medium.ttf');
-}
-@font-face {
-    font-family: dmsans-italic;
-    src: url('/fonts/DMSans-Italic.ttf');
-}
-@font-face {
-    font-family: quicksand-regular;
-    src: url('/fonts/Quicksand-Regular.ttf');
-}
-@font-face {
-    font-family: quicksand-light;
-    src: url('/fonts/Quicksand-Light.ttf');
-}
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap'); */
+
 
  /* ---------------------landing--------------------- */
 
 body{
     width: 100%;
-    font-family: dmsans-regular;
-    background-image: url('/images/landing.png');
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    /* background-image: url('/images/landing.png'); */
     background-color: #FFFFFF;
     background-size: cover;
 }
@@ -47,7 +26,6 @@ body{
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
     background: #FFFFFF;
     box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
@@ -60,16 +38,17 @@ p#subtitle_group{
 }
 
 span#noun{
-    font-family: dmsans-bold;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
 }
 
 hr{
     border:none;
-    border-top:1px solid;
-    width: 10%;
+    border-top: 2px solid;
+    width: 15%;
     margin-left: 0px;
     margin-right: auto;
-    color: #8A8A8A;
+    color: #A7A7A7;
 }
 
 .pronunciation{
@@ -98,7 +77,8 @@ h1#home_title{
     margin: 0px;
     text-align: left;
     letter-spacing: 12px;
-    font-family: "quicksand-light";
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
     color: #5C5C5C;
 }
 

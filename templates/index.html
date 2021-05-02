@@ -251,14 +251,14 @@
     color: #BCBCBC;
   }
 
-  .panel-content{
+  .panel-content {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 6px;
   }
 
-  .panel-item{
+  .panel-item {
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
@@ -269,10 +269,10 @@
     margin-bottom: 8px;
   }
 
-  img#panel-icon{
+  img#panel-icon {
     width: 16px;
     height: 16px;
-    margin-right:4px;
+    margin-right: 4px;
   }
   
   img#edit-icon{
@@ -282,7 +282,7 @@
     float: right;
   }
 
-  p#panel-text{
+  p#panel-text {
     display: inline-block;
     margin: auto;
     position: relative;
@@ -313,7 +313,8 @@
     border-radius: 10px;
 
   }
-  span#day-label{
+
+  span#day-label {
     font-family: DM Sans;
     font-style: normal;
     font-weight: 500;
@@ -337,18 +338,20 @@
 
     letter-spacing: 0.03em;
   }
-  a#event-container{
+
+  a#event-container {
     box-shadow: 0px 0px 6px #7EB6BE;
     border-radius: 8px;
     background: #FFFFFF;
   }
-  a#event-container::before{
-    color: #7EB6BE;
-  }
-  em#event-name{
+
+  a#event-container::before {
     color: #7EB6BE;
   }
 
+  em#event-name {
+    color: #7EB6BE;
+  }
 </style>
 
 <head>
@@ -459,7 +462,7 @@
             <input class="modal-input" type="number" id="hours" name="hours" required><br>
 
             <div class="modal-buttons">
-              <span class="close"id = "close">CLOSE</span>
+              <span class="close" id="close">CLOSE</span>
               <input type="submit" id="modal-submit" value="ADD">
             </div>
 
@@ -498,133 +501,126 @@
             </ul>
           </div> <!-- .cd-schedule__timeline -->
 
-          <div class="cd-schedule__events">
+          <div class="cd-schedule__events" style="pointer-events: none">
             <ul>
               <li class="cd-schedule__group">
                 <div class="cd-schedule__top-info"><span id="day-label">SUN {{dates[index]}} </span></div>
 
-                <ul >
+                <ul>
                   {% for i in events[6] %}
-                  {%if (i['start_day'] == dates[index]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                    class="cd-schedule__event">
-                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                      data-event="event-1">
+                  {%if (i['start_day'] == dates[index])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-1">
                       <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
                     </a>
+                  </li>
+                  {%endif%}
+                  {%endfor%}
+                </ul>
               </li>
-              {%endif%}
-              {%endfor%}
-            </ul>
-            </li>
-            <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span id="day-label">MON {{dates[index+1]}}</span></div>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span id="day-label">MON {{dates[index+1]}}</span></div>
 
-              <ul>
-                {% for i in events[0] %}
-                {%if (i['start_day'] == dates[index+1]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                  class="cd-schedule__event">
-                  <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                    data-event="event-2">
-                    <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
-                  </a>
-            </li>
-            {%endif%}
-            {%endfor%}
+                <ul>
+                  {% for i in events[0] %}
+                  {%if (i['start_day'] == dates[index+1])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-2">
+                      <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                  </li>
+                  {%endif%}
+                  {%endfor%}
 
-            </ul>
-            </li>
+                </ul>
+              </li>
 
-            <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span id="day-label">TUE {{dates[index+2]}}</span></div>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span id="day-label">TUE {{dates[index+2]}}</span></div>
 
-              <ul>
-                {% for i in events[1] %}
-                {%if (i['start_day'] == dates[index+2]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                  class="cd-schedule__event">
-                  <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                    data-event="event-3">
-                    <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
-                  </a>
-            </li>
-            {%endif%}
+                <ul>
+                  {% for i in events[1] %}
+                  {%if (i['start_day'] == dates[index+2])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-3">
+                      <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                  </li>
+                  {%endif%}
 
-            {%endfor%}
+                  {%endfor%}
 
-            </ul>
-            </li>
+                </ul>
+              </li>
 
-            <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span id="day-label">WED {{dates[index+3]}}</span></div>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span id="day-label">WED {{dates[index+3]}}</span></div>
 
-              <ul>
-                {% for i in events[2] %}
-                {%if (i['start_day'] == dates[index+3]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                  class="cd-schedule__event">
-                  <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                    data-event="event-4">
-                    <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
-                  </a>
-            </li>
-            {%endif%}
+                <ul>
+                  {% for i in events[2] %}
+                  {%if (i['start_day'] == dates[index+3])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-4">
+                      <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                  </li>
+                  {%endif%}
 
-            {%endfor%}
-            </ul>
-            </li>
+                  {%endfor%}
+                </ul>
+              </li>
 
-            <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span id="day-label">THUR {{dates[index+4]}}</span></div>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span id="day-label">THUR {{dates[index+4]}}</span></div>
 
-              <ul>
-                {% for i in events[3] %}
-                {%if (i['start_day'] == dates[index+4]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                  class="cd-schedule__event">
-                  <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                    data-event="event-1">
-                    <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
-                  </a>
-            </li>
-            {%endif%}
+                <ul>
+                  {% for i in events[3] %}
+                  {%if (i['start_day'] == dates[index+4])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-1">
+                      <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                  </li>
+                  {%endif%}
 
-            {%endfor%}
+                  {%endfor%}
 
-            </ul>
-            </li>
+                </ul>
+              </li>
 
-            <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span id="day-label" >FRI {{dates[index+5]}}</span></div>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span id="day-label">FRI {{dates[index+5]}}</span></div>
 
-              <ul>
-                {% for i in events[4] %}
-                {%if (i['start_day'] == dates[index+5]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                  class="cd-schedule__event">
-                  <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                    data-event="event-2">
-                    <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
-                  </a>
-            </li>
-            {%endif%}
+                <ul>
+                  {% for i in events[4] %}
+                  {%if (i['start_day'] == dates[index+5])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-2">
+                      <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                  </li>
+                  {%endif%}
 
-            {%endfor%}
-            </ul>
-            </li>
+                  {%endfor%}
+                </ul>
+              </li>
 
-            <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span id="day-label">SAT {{dates[index+6]}}</span></div>
+              <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span id="day-label">SAT {{dates[index+6]}}</span></div>
 
-              <ul>
-                {% for i in events[5] %}
-                {%if (i['start_day'] == dates[index+6]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
-                  class="cd-schedule__event">
-                  <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
-                    data-event="event-3">
-                    <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
-                  </a>
-            </li>
-            {%endif%}
+                <ul>
+                  {% for i in events[5] %}
+                  {%if (i['start_day'] == dates[index+6])%} <li class="cd-schedule__event">
+                    <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}"
+                      data-content="event-abs-circuit" data-event="event-3">
+                      <em id="event-name" class="cd-schedule__name">{{i['name']}}</em>
+                    </a>
+                  </li>
+                  {%endif%}
 
-            {%endfor%}
-            </ul>
-            </li>
+                  {%endfor%}
+                </ul>
+              </li>
 
             </ul>
           </div>
@@ -661,13 +657,13 @@
     var span_close = document.getElementById("initClose");
 
 
-      window.onload = function() {
-          if(sessionStorage["PopupShown"] != 'yes'){
-            modalInit.style.display = "block";
-          }
-          sessionStorage["PopupShown"] = 'yes';
+    window.onload = function () {
+      if (sessionStorage["PopupShown"] != 'yes') {
+        modalInit.style.display = "block";
+      }
+      sessionStorage["PopupShown"] = 'yes';
 
-      };
+    };
     span_close.onclick = function () {
       modalInit.style.display = "none";
     }

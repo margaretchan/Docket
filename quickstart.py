@@ -123,6 +123,16 @@ def populateCalendar():
             calendarEvents[start.weekday()].append({"start_day": start.date().strftime("%m.%d"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m.%d"), "end_time": end.time().strftime("%H:%M"), "name": name})
     return calendarEvents
 
+def addTaskToEvent(task_blocks, events):
+    for block in task_blocks:
+        new_block={"start_day": block.start_time.strftime("%m.%d"), 
+                    "start_time": block.start_time.time().strftime("%H:%M"), 
+                    "end_day": block.end_time.date().strftime("%m.%d"), 
+                    "end_time": block.end_time.time().strftime("%H:%M"), 
+                    "name": block.task.name + "("+str(block.task_block_num) + ")"
+        }
+        events[block.start_time.weekday()].append(new_block)
+    return events
 
 if __name__ == '__main__':
     populateBusyBlocks()

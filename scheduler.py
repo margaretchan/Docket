@@ -72,7 +72,11 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
     
     end_of_start_day = datetime.combine(start.date(), day_end_time)
     start_of_next_day = datetime.combine(start.date(), day_start_time) + timedelta(days=1)
-    first_feasible_start = start if end_of_start_day - start >= block_duration else start_of_next_day
+    first_feasible_start = start if end_of_start_day - start >= block_duration and \
+                                    start.time() > day_start_time and \
+                                    start.time() < day_end_time \
+                                 else start_of_next_day
+
     
     ## Case 1: no scheduled blocks OR 
     #   new task block can be scheduled before the first already scheduled task block

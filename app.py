@@ -1,6 +1,6 @@
 from events import Task, BusyBlock, TaskBlock
 from scheduler import schedule
-from quickstart import populateCalendar, getStartEndDates, populateBusyBlocks
+from quickstart import populateCalendar, getStartEndDates, populateBusyBlocks, addTaskToEvent
 from flask import Flask, render_template, request, redirect, jsonify
 from datetime import datetime, timedelta, time
 
@@ -12,7 +12,8 @@ temp_assign = {
     "deadline": "5/5/2021",
     "hours": 4
 }
-assignments = [temp_assign]
+assignments = []
+global global_events = populateCalendar()
 
 """
 purpose: Render our website pages.
@@ -24,10 +25,8 @@ def landing():
 
 @app.route('/home')
 def home():
-    events = populateCalendar()
     dates = getStartEndDates()  
-
-    return render_template('index.html', start_hour = 8, end_hour= 24, events =events, dates = dates, index = 0, assignments = [temp_assign])
+    return render_template('index.html', start_hour = 8, end_hour= 24, events = global_events, dates = dates, index = 0, assignments = [temp_assign])
 
 #add in backend algorithm
 @app.route('/addAssignment', methods = ['POST'])
@@ -43,10 +42,7 @@ def addAssignment():
     task = Task(name, deadline, timedelta(hours = hours), blocks, priority, start)
 
     task_blocks = schedule([task], busy_blocks)
-    #pass this info to backend algorithm
-    #backend algorithm will return new schedule of events
-    #events need to be in the form of a list of lists where each index is day of week (0 = Monday, 6 =Sunday)
-    events = populateCalendar()
+    new_events = addTaskToEvent(task_blocks, global_events)
     dates = getStartEndDates() 
     new_assign = {
         "name": name,
@@ -56,21 +52,21 @@ def addAssignment():
         "hours": hours
     }
     assignments.append(new_assign)
+    print(new_events[6])
+    global_events = new_events
 
-    return render_template('index.html', start_hour = 8, end_hour= 24, events =events, dates = dates, index = 0, assignments = assignments)
+    return render_template('index.html', start_hour = 8, end_hour= 24, events =  global_events, dates = dates, index = 0, assignments = assignments)
 
 
 @app.route('/nextpage<index>', methods=['GET', 'POST'])
 def nextPage(index):
-    events = populateCalendar()
     dates = getStartEndDates()
-    return render_template('index.html', start_hour = 8, end_hour= 24, events = events, dates = dates, index = int(index) + 7, assignments = assignments)
+    return render_template('index.html', start_hour = 8, end_hour= 24, events =  global_events, dates = dates, index = int(index) + 7, assignments = assignments)
 
 @app.route('/backpage<index>', methods=['GET', 'POST'])
 def backPage(index):
-    events = populateCalendar()
     dates = getStartEndDates()
-    return render_template('index.html', start_hour = 8, end_hour= 24, events = events, dates = dates, index = int(index) - 7, assignments = assignments)
+    return render_template('index.html', start_hour = 8, end_hour= 24, events =  global_events, dates = dates, index = int(index) - 7, assignments = assignments)
 
 
 """

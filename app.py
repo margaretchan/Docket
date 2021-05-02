@@ -15,6 +15,7 @@ temp_assign = {
     "hours": 4
 }
 assignments = []
+assignment_names=[]
 
 """
 purpose: Render our website pages.
@@ -41,7 +42,7 @@ def main():
     session['events'] = events
     session['index'] = 0
 
-    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events = events, dates = dates, index = 0, assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events = events, dates = dates, index = 0, assignments = assignments, assignment_names=assignment_names)
 
 @app.route('/home')
 def home():
@@ -50,7 +51,7 @@ def home():
     session['events'] = events
     session['index'] = 0
 
-    return render_template('index.html', start_hour = 1, end_hour= 24, events = events, dates = dates, index = 0, assignments = assignments)
+    return render_template('index.html', start_hour = 1, end_hour= 24, events = events, dates = dates, index = 0, assignments = assignments, assignment_names=assignment_names)
 
 #add in backend algorithm
 @app.route('/addAssignment', methods = ['POST'])
@@ -67,8 +68,6 @@ def addAssignment():
     leeway = timedelta(hours = session['finish_hours'])
     breaks = timedelta(minutes = session['break'])
 
-
-
     
     busy_blocks = populateBusyBlocks()
     task = Task(name, deadline, timedelta(hours = hours), blocks, priority, start)
@@ -84,10 +83,15 @@ def addAssignment():
         "hours": hours
     }
     assignments.append(new_assign)
+    assignment_names.append(name)
+    print(assignment_names)
+    print(new_assign['name'])
+    print(new_assign['name']in assignment_names)
+
     session['events']=new_events
     index= session['index']
 
-    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  new_events, dates = dates, index = index, assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  new_events, dates = dates, index = index, assignments = assignments, assignment_names=assignment_names)
 
 
 @app.route('/nextpage', methods=['GET', 'POST'])
@@ -95,14 +99,14 @@ def nextPage():
     events = session['events']
     session['index'] = session['index'] + 7
     dates = getStartEndDates()
-    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  events, dates = dates, index = session['index'], assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  events, dates = dates, index = session['index'], assignments = assignments, assignment_names=assignment_names)
 
 @app.route('/backpage', methods=['GET', 'POST'])
 def backPage():
     events = session['events']
     dates = getStartEndDates()
     session['index'] = session['index'] - 7
-    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  events, dates = dates, index = session['index'], assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  events, dates = dates, index = session['index'], assignments = assignments, assignment_names=assignment_names)
 
 
 """

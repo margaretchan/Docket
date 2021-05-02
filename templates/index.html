@@ -373,12 +373,12 @@
             <input class="modal-input" type="text" id="name" name="name" placeholder="e.g. Sociology Paper"
               required><br>
             <label id="modal-label" for="deadline">DEADLINE</label><br>
-            <input class="modal-input" type="datetime-local" id="deadline" name="deadline"><br>
+            <input class="modal-input" type="datetime-local" id="deadline" name="deadline" required><br>
             <label id="modal-label" for="start">START DATE</label><br>
             <input class="modal-input" type="datetime-local" id="start" name="start" required><br>
 
             <label id="modal-label" for="priority">PRIORITY</label><br>
-            <select class="modal-input" name="priority" id="priority">
+            <select class="modal-input" name="priority" id="priority" required>
               <option value="0">Low</option>
               <option value="1">Medium</option>
               <option value="2">High</option>
@@ -391,7 +391,7 @@
             <input class="modal-input" type="number" id="hours" name="hours" required><br>
 
             <div class="modal-buttons">
-              <span class="close"id = "close">CLOSE</span>
+              <span class="close" id="close">CLOSE</span>
               <input type="submit" id="modal-submit" value="ADD">
             </div>
 
@@ -430,7 +430,7 @@
             </ul>
           </div> <!-- .cd-schedule__timeline -->
 
-          <div class="cd-schedule__events">
+          <div class="cd-schedule__events" style="pointer-events: none">
             <ul>
               <li class="cd-schedule__group">
                 <div class="cd-schedule__top-info"><span>SUN {{dates[index]}} </span></div>
@@ -593,13 +593,13 @@
     var span_close = document.getElementById("initClose");
 
 
-      window.onload = function() {
-          if(sessionStorage["PopupShown"] != 'yes'){
-            modalInit.style.display = "block";
-          }
-          sessionStorage["PopupShown"] = 'yes';
+    window.onload = function () {
+      if (sessionStorage["PopupShown"] != 'yes') {
+        modalInit.style.display = "block";
+      }
+      sessionStorage["PopupShown"] = 'yes';
 
-      };
+    };
     span_close.onclick = function () {
       modalInit.style.display = "none";
     }

@@ -385,7 +385,7 @@
             <input class="modal-input" type="number" id="hours" name="hours" required><br>
 
             <div class="modal-buttons">
-              <span class="close"id = "close">CLOSE</span>
+              <span class="close" id="close">CLOSE</span>
               <input type="submit" id="modal-submit" value="ADD">
             </div>
 
@@ -424,7 +424,7 @@
             </ul>
           </div> <!-- .cd-schedule__timeline -->
 
-          <div class="cd-schedule__events">
+          <div class="cd-schedule__events" style="pointer-events: none">
             <ul>
               <li class="cd-schedule__group">
                 <div class="cd-schedule__top-info"><span>SUN {{dates[index]}} </span></div>
@@ -587,13 +587,13 @@
     var span_close = document.getElementById("initClose");
 
 
-      window.onload = function() {
-          if(sessionStorage["PopupShown"] != 'yes'){
-            modalInit.style.display = "block";
-          }
-          sessionStorage["PopupShown"] = 'yes';
+    window.onload = function () {
+      if (sessionStorage["PopupShown"] != 'yes') {
+        modalInit.style.display = "block";
+      }
+      sessionStorage["PopupShown"] = 'yes';
 
-      };
+    };
     span_close.onclick = function () {
       modalInit.style.display = "none";
     }

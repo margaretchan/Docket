@@ -1,7 +1,9 @@
 from events import Task, BusyBlock, TaskBlock
 from scheduler import schedule
-from quickstart import populateCalendar, getStartEndDates
+from quickstart import populateCalendar, getStartEndDates, populateBusyBlocks
 from flask import Flask, render_template, request, redirect, jsonify
+from datetime import datetime, timedelta, time
+
 
 
 app = Flask(__name__)
@@ -33,12 +35,16 @@ def home():
 @app.route('/addAssignment', methods = ['POST'])
 def addAssignment():
     name = request.form['name']
-    deadline = request.form['deadline']
-    start = request.form['start']
-    priority = request.form['priority']
-    blocks = request.form['blocks']
-    hours = request.form['hours']
+    deadline = datetime.strptime(request.form['deadline'], '%Y-%m-%dT%H:%M')
+    start = datetime.strptime(request.form['start'], '%Y-%m-%dT%H:%M')
+    priority = int(request.form['priority'])
+    blocks = int(request.form['blocks'])
+    hours = int(request.form['hours'])
+    
+    busy_blocks = populateBusyBlocks()
+    task = Task(name, deadline, timedelta(hours = hours), blocks, priority, start)
 
+    # task_blocks = schedule([task], busy_blocks)
     #pass this info to backend algorithm
     #backend algorithm will return new schedule of events
     #events need to be in the form of a list of lists where each index is day of week (0 = Monday, 6 =Sunday)

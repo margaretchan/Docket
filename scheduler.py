@@ -22,7 +22,7 @@ def schedule(tasks, busy_blocks, day_start_time=time(hour=9), day_end_time=time(
     # make overlapping tasks one big task to satisfy schedule_with_earliest_start() precondition
     scheduled_blocks = consolidate_blocks(busy_blocks.copy())
     # sort tasks by descending priority with earlier deadlines first for tiebreaks
-    priority_scheduling = lambda task: (task.end_time, -task.priority)
+    priority_scheduling = lambda task: (task.due, -task.priority)
     sorted_tasks = sorted(tasks, key=priority_scheduling) 
     
     # schedule taskblocks for all tasks, in sorted order

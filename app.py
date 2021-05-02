@@ -13,7 +13,7 @@ temp_assign = {
     "hours": 4
 }
 assignments = []
-global global_events = populateCalendar()
+global_events = populateCalendar()
 
 """
 purpose: Render our website pages.

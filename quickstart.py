@@ -84,7 +84,6 @@ def getCalendarInfo():
         sunday_date =  datetime.datetime.now() - datetime.timedelta(days=1+day_of_week)
     sunday_start = datetime.datetime.combine(sunday_date.date(), datetime.time(0,0,0))    
     sunday_formated =  sunday_start.isoformat() + 'Z' # 'Z' indicates UTC time
-    print(day_of_week)
 
     saturday_date =  datetime.datetime.now() + datetime.timedelta(days= 28 + (5 - day_of_week) )
     saturday_end = datetime.datetime.combine(saturday_date.date(), datetime.time(23,59,59))    

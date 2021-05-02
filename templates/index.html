@@ -505,7 +505,7 @@
 
                 <ul >
                   {% for i in events[6] %}
-                  {%if (i['start_day'] == dates[index]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                  {%if (i['start_day'] == dates[index])%} <li
                     class="cd-schedule__event">
                     <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                       data-event="event-1">
@@ -521,7 +521,7 @@
 
               <ul>
                 {% for i in events[0] %}
-                {%if (i['start_day'] == dates[index+1]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                {%if (i['start_day'] == dates[index+1])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -539,7 +539,7 @@
 
               <ul>
                 {% for i in events[1] %}
-                {%if (i['start_day'] == dates[index+2]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                {%if (i['start_day'] == dates[index+2])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-3">
@@ -558,7 +558,7 @@
 
               <ul>
                 {% for i in events[2] %}
-                {%if (i['start_day'] == dates[index+3]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                {%if (i['start_day'] == dates[index+3])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-4">
@@ -576,7 +576,7 @@
 
               <ul>
                 {% for i in events[3] %}
-                {%if (i['start_day'] == dates[index+4]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                {%if (i['start_day'] == dates[index+4])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-1">
@@ -595,7 +595,7 @@
 
               <ul>
                 {% for i in events[4] %}
-                {%if (i['start_day'] == dates[index+5]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                {%if (i['start_day'] == dates[index+5])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-2">
@@ -613,7 +613,7 @@
 
               <ul>
                 {% for i in events[5] %}
-                {%if (i['start_day'] == dates[index+6]) and (start_hour|string+ ":00" <= i['start_time']) and (end_hour|string+ ":00" >= i['end_time'])%} <li
+                {%if (i['start_day'] == dates[index+6])%} <li
                   class="cd-schedule__event">
                   <a id="event-container" data-start="{{i['start_time']}}" data-end="{{i['end_time']}}" data-content="event-abs-circuit"
                     data-event="event-3">

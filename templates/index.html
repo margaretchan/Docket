@@ -2,112 +2,142 @@
 <html lang="en">
     <style>
       /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 3; /* Sit on top */
-  padding-top: 200px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-/* Modal Content */
-.modal-content {
-  z-index: 1; /* Sit on top */
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-}
+    @font-face {
+      font-family: dmsans-regular;
+      src: url('/fonts/DMSans-Regular.ttf');
+    } 
+    @font-face {
+      font-family: dmsans-bold;
+      src: url('/fonts/DMSans-Bold.ttf');
+    }
+    @font-face {
+        font-family: dmsans-medium;
+        src: url('/fonts/DMSans-Medium.ttf');
+    }
+    body{
+      font-family: dmsans-regular;
+    }
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 3; /* Sit on top */
+      padding-top: 200px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      font-family: dmsans-regular;
+    }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
+    /* Modal Content */
+    .modal-content {
+      z-index: 1; /* Sit on top */
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%;
+    }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-        a {
-          text-decoration: none;
-          display: inline-block;
-          padding: 8px 16px;
-        }
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+    }
+    
+    a:hover {
+      background-color: #dddddd;
+      color: black;
+    }
+    
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    
+    .next {
+      background-color: #04AA6D;
+      color: white;
+    }
         
-        a:hover {
-          background-color: #dddddd;
-          color: black;
-        }
-        
-        .previous {
-          background-color: #f1f1f1;
-          color: black;
-        }
-        
-        .next {
-          background-color: #04AA6D;
-          color: white;
-        }
-        
-        .round {
-          border-radius: 50%;
-        }
+    .round {
+      border-radius: 50%;
+    }
 
-        .button.disabled {
-          opacity: 0.65; 
-          cursor: not-allowed;
-        }
+    .button.disabled {
+      opacity: 0.65; 
+      cursor: not-allowed;
+    }
 
-        .accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
+    .accordion {
+      cursor: pointer;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+      filter: drop-shadow(0px 0px 3px #8BB790);
+      background: #FFFFFF;
+      border-radius: 8px;
 
-.active, .accordion:hover {
-  background-color: #ccc;
-}
+      font-size: 14px;
+      line-height: 131.34%;
+      /* identical to box height, or 16px */
 
-.accordion:after {
-  content: '\002B';
-  color: #777;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
+      letter-spacing: 0.03em;
 
-.active:after {
-  content: "\2212";
-}
+      color: #8BB790;
+    }
 
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
+    .active, .accordion:hover {
+      filter: drop-shadow(0px 0px 6px #8BB790);
+    }
 
-        </style>
+    .accordion:after {
+      content: '\002B';
+      color: #777;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .active:after {
+      content: "\2212";
+    }
+
+    .panel {
+      padding: 0 24px;
+      background: #FFFFFF;
+      box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size:14px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+
+</style>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

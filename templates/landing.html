@@ -5,7 +5,8 @@
     <title>Docket</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="static/css/theme.css">
+    <link rel="stylesheet" href="static/css/theme.css">
+    <meta name="google-signin-client_id" content="1093409666695-bs4595ef83tlond9dsfqnc7cij4tcmnr.apps.googleusercontent.com">
 
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -16,6 +17,25 @@
     <meta name="theme-color" content="#ffffff"> -->
 
 </head>
+<style>
+   .google{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 24px;
+    width: 223px;
+    height: 37px;
+
+    background: #96B1D1;
+    border-radius: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: dmsans-regular;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+}
+</style>
 
 <body>
     <div class="home_container">
@@ -26,9 +46,12 @@
         <hr>
 
         <p id="definition">a task management system that conveniently schedules and breaks down your assignments into bite-sized pieces.</p>
-        <p id="sentence">“What’s on the docket today?”</p>
-
+        <p id="sentence">“What’s on the docket today?”</p><br>
+        <form action="/home">
+            <input type="submit" class ="google" value="Sign in with Google" />
+        </form>
     </div>
+    
     
 
     <!-- <footer>

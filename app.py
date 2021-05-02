@@ -24,14 +24,30 @@ purpose: Render our website pages.
 def landing():
     return render_template('landing.html')
 
-@app.route('/home')
-def home():
+@app.route('/main', methods = ['POST'])
+def main():
+    print(request.form['start_day'])
+    session['start_day'] = int(request.form['start_day'].split(":", 1)[0])
+    session['end_day'] = int(request.form['end_day'].split(":", 1)[0])
+    session['break'] = int(request.form['break'])
+    finish_hours = int(request.form['finish_hours'])
+    
     events = populateCalendar()
+    dates = getStartEndDates() 
+
     session['events'] = events
     session['index'] = 0
 
-    dates = getStartEndDates()  
-    return render_template('index.html', start_hour = 8, end_hour= 24, events = events, dates = dates, index = 0, assignments = [temp_assign])
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events = events, dates = dates, index = 0, assignments = assignments)
+
+@app.route('/home')
+def home():
+    events = populateCalendar()
+    dates = getStartEndDates() 
+    session['events'] = events
+    session['index'] = 0
+
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events = events, dates = dates, index = 0, assignments = assignments)
 
 #add in backend algorithm
 @app.route('/addAssignment', methods = ['POST'])
@@ -62,7 +78,7 @@ def addAssignment():
     index= session['index']
 
 
-    return render_template('index.html', start_hour = 8, end_hour= 24, events =  new_events, dates = dates, index = index, assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  new_events, dates = dates, index = index, assignments = assignments)
 
 
 @app.route('/nextpage', methods=['GET', 'POST'])
@@ -70,19 +86,18 @@ def nextPage():
     events = session['events']
     session['index'] = session['index'] + 7
     dates = getStartEndDates()
-    return render_template('index.html', start_hour = 8, end_hour= 24, events =  events, dates = dates, index = session['index'], assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  events, dates = dates, index = session['index'], assignments = assignments)
 
 @app.route('/backpage', methods=['GET', 'POST'])
 def backPage():
     events = session['events']
     dates = getStartEndDates()
     session['index'] = session['index'] - 7
-    return render_template('index.html', start_hour = 8, end_hour= 24, events =  events, dates = dates, index = session['index'], assignments = assignments)
+    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events =  events, dates = dates, index = session['index'], assignments = assignments)
 
 
 """
 purpose: Run server.
 """
 if __name__ == '__main__':
-    global_events = populateCalendar()
     app.run()

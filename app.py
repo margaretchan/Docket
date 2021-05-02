@@ -4,8 +4,6 @@ from quickstart import populateCalendar, getStartEndDates, populateBusyBlocks
 from flask import Flask, render_template, request, redirect, jsonify
 from datetime import datetime, timedelta, time
 
-
-
 app = Flask(__name__)
 temp_assign = {
     "name": "INFO 3300 project",
@@ -44,7 +42,7 @@ def addAssignment():
     busy_blocks = populateBusyBlocks()
     task = Task(name, deadline, timedelta(hours = hours), blocks, priority, start)
 
-    # task_blocks = schedule([task], busy_blocks)
+    task_blocks = schedule([task], busy_blocks)
     #pass this info to backend algorithm
     #backend algorithm will return new schedule of events
     #events need to be in the form of a list of lists where each index is day of week (0 = Monday, 6 =Sunday)

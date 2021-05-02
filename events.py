@@ -15,11 +15,11 @@ class Task:
     def __init__(self, name, due, expected_duration, num_blocks, priority=0, 
                  start=datetime.datetime.now()):
         self.name = name
-        self.due = due
+        self.due = due.replace(tzinfo=None)
         self.expected_duration = expected_duration
         self.num_blocks = num_blocks
         self.priority = priority
-        self.start = start
+        self.start = start.replace(tzinfo=None)
         self.num_blocks_assigned = 0
         
     def __eq__(self, other):
@@ -41,8 +41,8 @@ BusyBlock is a block of time which is pre-allotted in the user's calendar and
 class BusyBlock:
     def __init__(self, name, start_time, end_time):
         self.name = name
-        self.start_time = start_time
-        self.end_time = end_time
+        self.start_time = start_time.replace(tzinfo=None)
+        self.end_time = end_time.replace(tzinfo=None)
     
     def __eq__(self, other):
         if (isinstance(other, BusyBlock)):

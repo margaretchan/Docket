@@ -34,13 +34,13 @@ def schedule(tasks, busy_blocks, day_start_time=time(hour=9), day_end_time=time(
         
         while task.num_blocks_assigned < task.num_blocks:
             # calulate ideal start time to equally space task blocks
-            time_from_blockstart_to_finish = timedelta(seconds=task.num_blocks_assigned * secs_btwn_blocks)
+            time_from_blockstart_to_finish = timedelta(seconds=(task.num_blocks_assigned + 1) * secs_btwn_blocks)
             targeted_block_start_time = targeted_finish - time_from_blockstart_to_finish
             try:
                 # schedule_with_earliest_start() will increment task.num_blocks_assigned
                 scheduled = schedule_with_earliest_start(task, targeted_block_start_time, day_start_time, day_end_time, scheduled_blocks, leeway, buffer)
                 task_blocks.append(scheduled)
-                scheduled_blocks.append(BusyBlock(scheduled.name, scheduled.start_time, scheduled.end_time))
+                scheduled_blocks.append(BusyBlock(scheduled.task.name, scheduled.start_time, scheduled.end_time))
             except Exception as e:
                 raise e
             
@@ -64,7 +64,6 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
     targeted_finish = task.due - leeway
     
     # remove all scheduled blocks that end before the earliest start time - buffer
-    """TODO: also filter out ones after the deadline"""
     starts_after_start_time = lambda block: block.start_time > start - buffer and block.start_time < task.due
     blocks_before_task_due = filter(starts_after_start_time, scheduled_blocks)
     

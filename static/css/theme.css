@@ -15,23 +15,44 @@ body{
 }
 
 .home_container{
-    
     padding: 44px 64px;
-
     width: 400px;
     height: auto;
-    left: 447px;
-    top: 246px;
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
     background: #FFFFFF;
     box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+/* .home_button{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+} */
+.google{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 24px;
 
+    background: #96B1D1;
+    border-radius: 100px;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 36px;
+    border: 0px;
+}
+.google:hover,
+  .google:focus {
+    background: #7995B7;
+  }
 p#subtitle_group{
     font-size: 16px;
     margin-top: 0px;

@@ -274,6 +274,13 @@
     height: 16px;
     margin-right:4px;
   }
+  img#edit-icon{
+    width: 20px;
+    height: 20px;
+    position:absolute; 
+    top:0; 
+    right:0;
+  }
 
   p#panel-text{
     display: inline-block;
@@ -370,6 +377,7 @@
         {{i['name']}}</button>
       <div class="panel">
         <div class="panel-content">
+          <img id="edit-icon" src="/static/images/editicon.svg">
           <div class="panel-item">
             <img id="panel-icon" src="/static/images/blocks.png">
             <p id="panel-text"><b style="font-weight: bold; color: #000000;">{{i['blocks']}}</b> blocks</p>

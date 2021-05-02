@@ -67,5 +67,6 @@ class TaskBlock:
         
     def __eq__(self, other):
         if (isinstance(other, TaskBlock)):
-            return self.start_time == other.start_time and self.end_time == other.end_time and self.task == other.task
+            return self.start_time == other.start_time and self.end_time == other.end_time and \
+              self.task == other.task and self.task_block_num == other.task_block_num
         return False

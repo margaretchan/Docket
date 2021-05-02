@@ -62,6 +62,7 @@ precondition: scheduled_blocks has no overlapping blocks
 def schedule_with_earliest_start(task, start, day_start_time, day_end_time, scheduled_blocks, leeway, buffer):
     block_duration = timedelta(seconds=task.expected_duration.total_seconds() / task.num_blocks)
     targeted_finish = task.due - leeway
+    task_block_num = task.num_blocks - task.num_blocks_assigned
     
     # remove all scheduled blocks that end before the earliest start time - buffer
     starts_after_start_time = lambda block: block.start_time > start - buffer and block.start_time < task.due
@@ -79,7 +80,7 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
     if sorted_blocks == [] or \
         (sorted_blocks[0].start_time - buffer) - first_feasible_start >= block_duration:
         task.num_blocks_assigned += 1
-        return TaskBlock(first_feasible_start, first_feasible_start + block_duration, task, task.num_blocks_assigned)
+        return TaskBlock(first_feasible_start, first_feasible_start + block_duration, task, task_block_num)
     
     ## Case 2: task block will be scheduled at earliest possible time between 2 other blocks
     for i in range(len(sorted_blocks) - 1):
@@ -96,13 +97,13 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
         # Case 2.1: if there is enough time from end of current block + buffer to end of free period
         if end_of_free_period - earliest_start >= block_duration:
             task.num_blocks_assigned += 1
-            return TaskBlock(earliest_start, earliest_start + block_duration, task, task.num_blocks_assigned)
+            return TaskBlock(earliest_start, earliest_start + block_duration, task, task_block_num)
         # Case 2.2: if next task is not on the same date as the current 
         # AND there is enough time from the start of the next day to start of next block
         elif this_block.end_time.date() != next_block.start_time.date() and \
             latest_end - start_of_next_day >= block_duration:
             task.num_blocks_assigned += 1
-            return TaskBlock(start_of_next_day, start_of_next_day + block_duration, task, task.num_blocks_assigned)
+            return TaskBlock(start_of_next_day, start_of_next_day + block_duration, task, task_block_num)
         
     ## Case 3: schedule new task block after last scheduled task but before target deadline
     last_block = sorted_blocks[len(sorted_blocks) - 1]
@@ -113,11 +114,11 @@ def schedule_with_earliest_start(task, start, day_start_time, day_end_time, sche
     # Case 3.1: attempt to schedule immediately after last block
     if end_of_feasible_period - next_earliest_start >= block_duration:
         task.num_blocks_assigned += 1
-        return TaskBlock(next_earliest_start, next_earliest_start + block_duration, task, task.num_blocks_assigned)
+        return TaskBlock(next_earliest_start, next_earliest_start + block_duration, task, task_block_num)
     # Case 3.2: attempt to schedule at beginning of day after last block
     elif targeted_finish - start_of_day_after_last_block >= block_duration:
         task.num_blocks_assigned += 1
-        return TaskBlock(start_of_day_after_last_block, start_of_day_after_last_block + block_duration, task, task.num_blocks_assigned)
+        return TaskBlock(start_of_day_after_last_block, start_of_day_after_last_block + block_duration, task, task_block_num)
     
     raise Exception("Cannot schedule before deadline with current parameters :-(")
 

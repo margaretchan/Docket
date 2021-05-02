@@ -36,7 +36,10 @@ def getStartEndDates():
 
     # Calculate the first Sunday of the week and coming Saturday of the week
     day_of_week = datetime.datetime.today().weekday()
-    sunday_date =  datetime.datetime.now() - datetime.timedelta(days=day_of_week + 1)
+    if(day_of_week== 6):
+        sunday_date =  datetime.datetime.now() - datetime.timedelta(days=6-day_of_week)
+    else:
+        sunday_date =  datetime.datetime.now() - datetime.timedelta(days=1+day_of_week)
     sunday_start = datetime.datetime.combine(sunday_date.date(), datetime.time(0,0,0))    
     
     saturday_date =  datetime.datetime.now() + datetime.timedelta(days= 28 + (5 - day_of_week) )
@@ -75,10 +78,13 @@ def getCalendarInfo():
 
     # Calculate the first Sunday of the week and coming Saturday of the week
     day_of_week = datetime.datetime.today().weekday()
-    sunday_date =  datetime.datetime.now() - datetime.timedelta(days=day_of_week + 1)
+    if(day_of_week== 6):
+        sunday_date =  datetime.datetime.now() - datetime.timedelta(days=6-day_of_week)
+    else:
+        sunday_date =  datetime.datetime.now() - datetime.timedelta(days=1+day_of_week)
     sunday_start = datetime.datetime.combine(sunday_date.date(), datetime.time(0,0,0))    
     sunday_formated =  sunday_start.isoformat() + 'Z' # 'Z' indicates UTC time
-    
+
     saturday_date =  datetime.datetime.now() + datetime.timedelta(days= 28 + (5 - day_of_week) )
     saturday_end = datetime.datetime.combine(saturday_date.date(), datetime.time(23,59,59))    
     saturday_formated =  saturday_end.isoformat() + 'Z' # 'Z' indicates UTC time
@@ -123,6 +129,16 @@ def populateCalendar():
             calendarEvents[start.weekday()].append({"start_day": start.date().strftime("%m.%d"), "start_time": start.time().strftime("%H:%M"), "end_day": end.date().strftime("%m.%d"), "end_time": end.time().strftime("%H:%M"), "name": name})
     return calendarEvents
 
+def addTaskToEvent(task_blocks, events):
+    for block in task_blocks:
+        new_block={"start_day": block.start_time.strftime("%m.%d"), 
+                    "start_time": block.start_time.time().strftime("%H:%M"), 
+                    "end_day": block.end_time.date().strftime("%m.%d"), 
+                    "end_time": block.end_time.time().strftime("%H:%M"), 
+                    "name": block.task.name + "("+str(block.task_block_num) + ")"
+        }
+        events[block.start_time.weekday()].append(new_block)
+    return events
 
 if __name__ == '__main__':
-    populateBusyBlocks()
+    getCalendarInfo()

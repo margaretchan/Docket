@@ -1,4 +1,7 @@
 # Docket
+A task management system that conveniently schedules and breaks down your assignments into bite-sized pieces.
+
+"What's on the docket today?"
 ## **Flask Installation:**  
 ##### 1. Start Virtual Environment:  
 - For Mac:   

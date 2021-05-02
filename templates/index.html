@@ -306,6 +306,19 @@
     border-radius: 10px;
 
   }
+  span#day-label{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 131.34%;
+    /* or 18px */
+
+    text-align: center;
+    letter-spacing: 0.18em;
+
+    color: #5C5C5C;
+  }
 
   div#calendar-section {
     font-family: DM Sans;
@@ -353,7 +366,8 @@
 
       <!--- Assignments --->
       {%for i in assignments%}
-      <button class="accordion">{{i['name']}}</button>
+      <button class="accordion">
+        {{i['name']}}</button>
       <div class="panel">
         <div class="panel-content">
           <div class="panel-item">
@@ -479,7 +493,7 @@
           <div class="cd-schedule__events">
             <ul>
               <li class="cd-schedule__group">
-                <div class="cd-schedule__top-info"><span>SUN {{dates[index]}} </span></div>
+                <div class="cd-schedule__top-info"><span id="day-label">SUN {{dates[index]}} </span></div>
 
                 <ul >
                   {% for i in events[6] %}
@@ -495,7 +509,7 @@
             </ul>
             </li>
             <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span>MON {{dates[index+1]}}</span></div>
+              <div class="cd-schedule__top-info"><span id="day-label">MON {{dates[index+1]}}</span></div>
 
               <ul>
                 {% for i in events[0] %}
@@ -513,7 +527,7 @@
             </li>
 
             <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span>TUE {{dates[index+2]}}</span></div>
+              <div class="cd-schedule__top-info"><span id="day-label">TUE {{dates[index+2]}}</span></div>
 
               <ul>
                 {% for i in events[1] %}
@@ -532,7 +546,7 @@
             </li>
 
             <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span>WED {{dates[index+3]}}</span></div>
+              <div class="cd-schedule__top-info"><span id="day-label">WED {{dates[index+3]}}</span></div>
 
               <ul>
                 {% for i in events[2] %}
@@ -550,7 +564,7 @@
             </li>
 
             <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span>THUR {{dates[index+4]}}</span></div>
+              <div class="cd-schedule__top-info"><span id="day-label">THUR {{dates[index+4]}}</span></div>
 
               <ul>
                 {% for i in events[3] %}
@@ -569,7 +583,7 @@
             </li>
 
             <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span>FRI {{dates[index+5]}}</span></div>
+              <div class="cd-schedule__top-info"><span id="day-label" >FRI {{dates[index+5]}}</span></div>
 
               <ul>
                 {% for i in events[4] %}
@@ -587,7 +601,7 @@
             </li>
 
             <li class="cd-schedule__group">
-              <div class="cd-schedule__top-info"><span>SAT {{dates[index+6]}}</span></div>
+              <div class="cd-schedule__top-info"><span id="day-label">SAT {{dates[index+6]}}</span></div>
 
               <ul>
                 {% for i in events[5] %}

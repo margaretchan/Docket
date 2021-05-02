@@ -47,7 +47,7 @@ def home():
     session['events'] = events
     session['index'] = 0
 
-    return render_template('index.html', start_hour = session['start_day'], end_hour= session['end_day'], events = events, dates = dates, index = 0, assignments = assignments)
+    return render_template('index.html', start_hour = 1, end_hour= 24, events = events, dates = dates, index = 0, assignments = assignments)
 
 #add in backend algorithm
 @app.route('/addAssignment', methods = ['POST'])

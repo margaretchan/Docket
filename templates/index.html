@@ -356,7 +356,7 @@
         <input class="modal-input" type="number" id="hours" name="hours" required><br>
         
         <div class="modal-buttons">
-          <span class="close">CLOSE</span>
+          <span class="close" id = "close">CLOSE</span>
           <input type="submit" id="modal-submit" value="ADD">
         </div>
         
@@ -557,8 +557,11 @@
       var span_close = document.getElementById("initClose");
 
       window.onload = function() {
-          // sessionStorage["PopupShown"] = 'yes';
-          modalInit.style.display = "block";
+          if(sessionStorage["PopupShown"] != 'yes'){
+            modalInit.style.display = "block";
+          }
+          sessionStorage["PopupShown"] = 'yes';
+
       };
 
       // When the user clicks on <span> (x), close the modal
